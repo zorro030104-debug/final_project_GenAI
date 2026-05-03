@@ -1,52 +1,32 @@
-# AI Requirement Clarifier for ToB Product Workflows
+# AI Requirement Clarifier
 
 ## 1. Context and Problem
 
-### What is ToB (Business-to-Business)
+In business (especially enterprise / ToB) product development, requirements are often vague, incomplete, and unstructured.
+This leads to misalignment, repeated clarification, and delays.
 
-ToB (Business-to-Business) refers to products or services designed for organizations rather than individual consumers. Compared to ToC (Business-to-Consumer) products, ToB workflows typically involve multiple stakeholders, more complex processes, and less clearly defined requirements.
+This project focuses on a narrow workflow:
 
-As a result, requirements in ToB environments are often expressed in vague or incomplete ways, making early-stage clarification particularly important.
-
-### Background
-
-In ToB product development, requirements are often vague and unstructured, leading to misalignment, delays, and rework.
-
-This project focuses on improving the requirement clarification workflow by transforming vague inputs into structured and actionable outputs.
-
-### Target User and Workflow
-
-This tool is designed for:
-
-* Product Managers
-* Business Analysts
-
-Workflow:
-
-* Input: a vague or incomplete requirement
-* Output: a structured clarification including missing information and follow-up questions
+→ Turning vague requirements into structured, actionable specifications
 
 ---
 
 ## 2. Solution
 
-We built a Streamlit-based GenAI application with two modes:
+We built a simple Streamlit-based GenAI tool with two modes:
 
-Baseline:
+**Baseline (status quo):**
+Represents a typical real-world workflow where a product manager informally summarizes a requirement without structured guidance.
 
-* Uses a simple prompt to summarize the requirement
-* Produces a short, unstructured output
+**Improved (GenAI structured output):**
+The system generates:
 
-Improved:
+* Clarified Requirement
+* Missing Information
+* Clarification Questions
+* Risks / Ambiguities
 
-* Uses a structured prompt to generate:
-
-  * Clarified Requirement
-  * Missing Information
-  * Clarification Questions
-  * Risks / Ambiguities
-
-The key idea is that better prompt design leads to more useful outputs.
+The key idea is that **prompt design enables structured reasoning**, not just summarization.
 
 ---
 
@@ -58,63 +38,68 @@ This task requires:
 * identifying missing information
 * generating structured outputs
 
-Traditional rule-based methods cannot handle this variability effectively, while LLMs can generalize across different requirement scenarios.
+Traditional rule-based systems or templates cannot reliably handle this variability.
 
 ---
 
 ## 4. Evaluation Summary
 
-We tested the system on 8 representative inputs (see `input.txt`), including:
+We tested the system on 8 realistic requirement inputs (see `input.txt`), inspired by public sources such as GitHub feature requests and product feedback.
 
-* incomplete requirements
-* vague inputs
-* workflow and UX improvements
-* extreme ambiguity cases
+### Evaluation Criteria
 
-### Key Results
+Outputs are evaluated based on:
 
-Baseline vs Improved:
+* **Clarity** (is the requirement clearer?)
+* **Completeness** (are missing elements identified?)
+* **Actionability** (can a product team act on it?)
 
-* Structured Output: Baseline ❌ | Improved ✔
-* Missing Information Detection: Baseline ❌ | Improved ✔
-* Clarification Questions: Baseline ❌ | Improved ✔
-* Handling Vague Input: Baseline ⚠️ | Improved ✔
+### Key Result
 
-Conclusion:
-The improved version produces more structured and actionable outputs and handles ambiguity significantly better than the baseline.
+| Aspect                 | Baseline (Manual-style summary) | Improved (Structured) |
+| ---------------------- | ------------------------------- | --------------------- |
+| Structure              | ×                               | √                     |
+| Missing info detection | ×                               | √                     |
+| Actionability          | ×                               | √                     |
+| Handling vague input   | ⚠                              | √                     |
 
-📄 Detailed case analysis: see `evaluation.md`
+**Conclusion:**
+The structured GenAI approach significantly improves requirement clarity and usability compared to typical informal workflows.
+
+- Detailed case-by-case comparison: see `evaluation.md`
+- Example outputs: see `/output`
 
 ---
 
 ## 5. Limitations
 
-* Some outputs are generic or repetitive
+* Outputs can still be somewhat generic
 * Domain-specific constraints may be missing
-* Outputs depend on prompt design
-* Human review is still required before using results in real workflows
+* The system relies on input quality
+* **Human review is still required**, especially for complex or regulated domains
+
+The system may perform poorly when:
+
+* requirements contain hidden business rules
+* domain expertise is required but not stated
 
 ---
 
 ## 6. How to Run
 
-Install dependencies:
-
+```bash
 pip install streamlit openai
-
-Run the app:
-
 streamlit run app.py
+```
 
-Then open:
-
+Open in browser(not recommended):
 http://localhost:8501
 
 ---
 
 ## 7. Project Structure
 
-FINAL_PROJECT_GENAI/
+project/
 ├── app.py
 ├── input.txt
 ├── evaluation.md
@@ -125,16 +110,18 @@ FINAL_PROJECT_GENAI/
 
 ---
 
-## 8. Artifact
+## 8. Notes on Data
 
-See the `output/` folder for example results.
+The test inputs are synthetic but designed to reflect realistic patterns observed in public sources (e.g., GitHub feature requests, product feedback).
+
+Due to the private nature of real product requirements, synthetic data is used to simulate real-world scenarios.
 
 ---
 
-## 9. Conclusion
+## 9. Use Case
 
-This project demonstrates that structured prompt design significantly improves the usefulness of GenAI in requirement clarification workflows.
+This tool can be used as a lightweight assistant in early-stage product workflows to:
 
-Compared to a simple baseline, the improved approach produces more actionable, structured, and context-aware outputs, especially for vague or ambiguous inputs.
-
-Human-in-the-loop validation remains necessary for real-world deployment.
+* identify missing requirement details
+* prepare for stakeholder discussions
+* reduce ambiguity before specification writing

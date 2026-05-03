@@ -1,287 +1,217 @@
-# Evaluation Details
+# Evaluation
 
----
+## 1. Overview
 
-## 1. Test Setup
+This evaluation compares two versions of the AI Requirement Clarifier:
 
-To evaluate the effectiveness of the system, we constructed a test set of 8 representative requirement inputs (see `input.txt`). These inputs cover a range of real-world scenarios in ToB product workflows:
+**Baseline:**
+A simple summary output that represents a common informal workflow, where a vague requirement is briefly restated without structured analysis.
 
-* Clear but incomplete requirements
-* Moderately vague requirements
-* UX improvement requests
-* Workflow optimization scenarios
-* Extremely vague inputs (edge cases)
-* Multi-intent requirements
-* Ambiguous business goals
+**Improved:**
+A structured GenAI output that clarifies the requirement and organizes the response into:
 
-This diversity ensures that the system is tested across different levels of ambiguity and complexity.
+* Clarified Requirement
+* Missing Information
+* Clarification Questions
+* Risks / Ambiguities
+
+The evaluation uses 8 realistic ToB-style requirement inputs from `input.txt`.
 
 ---
 
 ## 2. Evaluation Criteria
 
-The evaluation follows the rubric defined in the project design:
+The outputs are evaluated based on three criteria:
 
-* **Clarity:** Does the output improve understanding of the requirement?
-* **Completeness:** Does it identify missing information?
-* **Hallucination Control:** Does it avoid inventing unsupported details?
-* **Structure:** Does it follow a consistent format?
-* **Usefulness:** Are the outputs actionable and relevant?
+1. **Clarity**
+   Does the output make the original requirement easier to understand?
 
----
+2. **Completeness**
+   Does the output identify missing users, goals, data, constraints, scope, success metrics, or timeline?
 
-## 3. Case-Based Comparison
-
-Below are selected examples demonstrating differences between the **Baseline** and **Improved** approaches.
+3. **Actionability**
+   Does the output help a product manager or business analyst know what to ask or do next?
 
 ---
 
-### Case 1: Sales Dashboard Requirement
+## 3. Case-by-Case Evaluation
+
+### Case 1: Dashboard for System Performance
 
 **Input:**
+Users have requested a dashboard to monitor system performance and metrics in a more structured way.
 
-> We need a dashboard for sales performance
+**Baseline Result:**
+The baseline summarizes the need for a dashboard and explains that it would help users monitor system data. However, it does not identify what metrics should be shown, who the dashboard is for, or what data sources are needed.
 
-**Baseline Output:**
+**Improved Result:**
+The improved version clarifies the dashboard purpose and identifies missing information such as users, goals, data sources, constraints, scope, success metrics, and timeline. It also asks specific questions about dashboard users, key metrics, update frequency, and success measurement.
 
-* Provides a general summary of a sales dashboard
-* Mentions metrics and insights at a high level
-* Lacks structure and does not identify missing details
-
-**Improved Output:**
-
-* Rewrites the requirement with clearer scope (metrics, trends, categories)
-* Identifies missing information such as:
-
-  * target users
-  * data sources
-  * update frequency
-* Generates relevant clarification questions
-* Highlights risks such as unclear metrics and audience
-
-**Key Insight:**
-The improved version converts a descriptive statement into a structured and actionable requirement.
+**Finding:**
+The improved version is more useful because it turns a general dashboard request into a structured planning document.
 
 ---
 
 ### Case 2: User Activity Tracking
 
 **Input:**
+The product team wants a way to track user activity across the platform.
 
-> Build something to track user activity
+**Baseline Result:**
+The baseline gives a general summary of tracking user behavior and improving user experience. It remains high-level and does not surface technical, privacy, or measurement questions.
 
-**Baseline Output:**
+**Improved Result:**
+The improved version clarifies that the system should monitor and log user activity. It identifies missing information about users, goals, data, legal/privacy constraints, scope, success metrics, and timeline. It also raises important risks such as privacy, scope creep, data overload, and implementation feasibility.
 
-* Produces a high-level description of tracking user behavior
-* Remains generic and descriptive
-
-**Improved Output:**
-
-* Specifies concrete tracked events (logins, page views, interactions)
-* Identifies missing elements:
-
-  * purpose of tracking
-  * privacy constraints
-  * system scale
-* Raises practical implementation questions
-* Identifies risks such as data privacy concerns
-
-**Key Insight:**
-The improved version moves from vague description to implementation-aware clarification.
+**Finding:**
+The improved version performs better because activity tracking requires careful definition of data, users, privacy requirements, and success metrics.
 
 ---
 
 ### Case 3: Checkout Experience Improvement
 
 **Input:**
+Users report that the checkout process is slow and confusing, and it needs improvement.
 
-> Improve the checkout experience
+**Baseline Result:**
+The baseline summarizes the checkout issue and states that improvements should increase user satisfaction and efficiency. However, it does not ask what part of checkout is slow or how success should be measured.
 
-**Baseline Output:**
+**Improved Result:**
+The improved version clarifies the goal of improving checkout speed and user experience. It identifies missing information about affected users, desired improvements, data, constraints, scope, success metrics, and timeline. It also highlights risks such as weak user feedback validation, scope creep, technical feasibility, unclear success measurement, and user segmentation.
 
-* Suggests general improvements (usability, efficiency)
-* Remains abstract
-
-**Improved Output:**
-
-* Reframes the requirement into measurable goals (reduce friction, improve conversion)
-* Identifies missing information:
-
-  * success metrics
-  * user segments
-  * existing pain points
-* Generates actionable clarification questions
-* Highlights risks such as focusing on the wrong UX aspects
-
-**Key Insight:**
-The improved version connects the requirement to measurable outcomes.
+**Finding:**
+The improved version is more actionable because it connects the UX problem to measurable outcomes such as checkout time, conversion rate, and user satisfaction.
 
 ---
 
-### Case 4: Reporting Improvement
+### Case 4: Manual Reporting Process
 
 **Input:**
+The operations team struggles with manual reporting and wants to simplify the reporting process.
 
-> Make reporting easier
+**Baseline Result:**
+The baseline summarizes the reporting problem and says the team wants to streamline reporting to reduce time and effort. It does not identify what reports are involved, who uses them, or what data sources are required.
 
-**Baseline Output:**
+**Improved Result:**
+The improved version clarifies that the operations team needs a solution to automate and simplify reporting. It identifies missing information about users, goals, data, constraints, scope, success metrics, and timeline. It also asks about current reporting challenges, report examples, critical reports, existing tools, and measurement criteria.
 
-* Describes simplifying reporting processes
-* Lacks specificity
-
-**Improved Output:**
-
-* Specifies improvements (automation, report generation, sharing)
-* Identifies missing details:
-
-  * report types
-  * user roles
-  * integration requirements
-* Raises targeted clarification questions
-* Highlights risks such as misalignment with user needs
-
-**Key Insight:**
-The improved version introduces structure and stakeholder awareness.
+**Finding:**
+The improved version is stronger because it reveals the operational details needed before designing a reporting solution.
 
 ---
 
-### Case 5: Approval Workflows
+### Case 5: Expense Approval Workflow
 
 **Input:**
+The finance team wants better approval workflows for expense requests.
 
-> We want better approval workflows
+**Baseline Result:**
+The baseline explains that the finance team wants to improve efficiency and tracking of expense approvals. However, it does not identify workflow steps, stakeholders, compliance needs, or approval metrics.
 
-**Baseline Output:**
+**Improved Result:**
+The improved version clarifies the need for an improved approval workflow for processing expense requests. It identifies missing information about users, goals, data, constraints, scope, success metrics, and timeline. It also raises risks such as user resistance, integration challenges, unclear assumptions, scope creep, and the need for human review.
 
-* Focuses on improving efficiency
-* Does not analyze workflow complexity
-
-**Improved Output:**
-
-* Clarifies goals (reduce processing time, improve user experience)
-* Identifies missing workflow details:
-
-  * stakeholders
-  * workflow types
-  * performance metrics
-* Raises detailed questions
-* Identifies risks such as organizational resistance
-
-**Key Insight:**
-The improved version captures organizational and process complexity.
+**Finding:**
+The improved version is more appropriate for enterprise workflows because approval processes often involve multiple stakeholders, compliance constraints, and system integrations.
 
 ---
 
-### Case 6: Extremely Vague Input
+### Case 6: Extremely Vague Requirement
 
 **Input:**
+A stakeholder simply said: make it better.
 
-> Make it better
+**Baseline Result:**
+The baseline produces a generic statement about improving an unspecified area or project. It does not recognize how vague the requirement is or explain what information is missing.
 
-**Baseline Output:**
+**Improved Result:**
+The improved version creates a tentative clarification but also identifies that key information is missing. It asks about target users, improvement goals, metrics, constraints, scope, success measurement, and timeline. It also flags risks such as unclear goals, subjective interpretation of “better,” scope creep, and the need for user feedback.
 
-* Produces a generic improvement statement
-* Does not acknowledge ambiguity
-
-**Improved Output:**
-
-* Explicitly identifies the requirement as vague
-* Lists multiple missing dimensions:
-
-  * scope
-  * users
-  * metrics
-* Raises critical clarification questions
-* Flags risks such as subjective interpretation and scope creep
-
-**Key Insight:**
-The improved version handles ambiguity explicitly, while the baseline fails to recognize it.
+**Finding:**
+This is the clearest example of the improved system’s value. The baseline treats the input as if it is usable, while the improved version exposes the ambiguity and turns it into follow-up questions.
 
 ---
 
-### Case 7: Multi-Intent Requirement
+### Case 7: Dashboard and Reporting for Decision-Making
 
 **Input:**
+Management wants a dashboard and improved reporting for decision-making.
 
-> Build a dashboard and improve reporting for management
+**Baseline Result:**
+The baseline summarizes the need for a dashboard with enhanced reporting. It does not separate the dashboard requirement from the reporting requirement or identify priority, users, data, or success metrics.
 
-**Baseline Output:**
+**Improved Result:**
+The improved version clarifies that management needs dashboard and reporting capabilities to support data-driven decision-making. It identifies missing users, goals, data sources, constraints, scope, success metrics, and timeline. It also asks questions about decisions to support, data sources, dashboard features, budget, and delivery timeline.
 
-* Combines both ideas into a general description
-* Does not separate concerns
-
-**Improved Output:**
-
-* Breaks down the requirement into dashboard and reporting components
-* Identifies missing details for both aspects
-* Raises questions about scope, KPIs, and priorities
-* Highlights risks such as unclear prioritization
-
-**Key Insight:**
-The improved version reveals hidden complexity in multi-intent inputs.
+**Finding:**
+The improved version handles the multi-intent requirement better by exposing hidden complexity around dashboard design, reporting depth, and management decision needs.
 
 ---
 
-### Case 8: Internal Productivity Optimization
+### Case 8: Internal Tools Optimization
 
 **Input:**
+The company wants to optimize internal tools to improve employee productivity.
 
-> Optimize our internal tools for better productivity
+**Baseline Result:**
+The baseline summarizes the goal of improving productivity by optimizing internal tools. It remains broad and does not specify which tools, users, or productivity measures are involved.
 
-**Baseline Output:**
+**Improved Result:**
+The improved version clarifies the goal of improving efficiency through internal tool optimization. It identifies missing information about employee groups, goals, data, constraints, scope, success metrics, and timeline. It also asks about specific tools, current pain points, productivity measurements, budget, technological constraints, and reassessment frequency.
 
-* Describes general productivity improvement
-* Remains abstract
-
-**Improved Output:**
-
-* Reframes into efficiency and user experience goals
-* Identifies missing information:
-
-  * tools involved
-  * target users
-  * performance metrics
-* Raises actionable questions
-* Highlights risks such as unclear measurement
-
-**Key Insight:**
-The improved version connects vague goals to measurable dimensions.
+**Finding:**
+The improved version is more useful because productivity improvement is broad and must be connected to specific tools, user groups, and measurable outcomes.
 
 ---
 
 ## 4. Overall Findings
 
-Across all test cases, the following patterns were observed:
+Across all 8 test cases, the improved version consistently produced more useful outputs than the baseline.
 
-* The baseline approach produces general summaries but lacks actionable value
-* The improved approach consistently produces structured outputs
-* Missing information is systematically identified in the improved version
-* Clarification questions significantly improve requirement quality
-* The improved system handles vague and ambiguous inputs more effectively
+The baseline usually:
 
----
+* Restated the requirement
+* Added a general business goal
+* Did not identify missing details
+* Did not provide structured next steps
 
-## 5. Limitations Observed
+The improved version consistently:
 
-During testing, several limitations were identified:
-
-* Some clarification questions are repetitive or generic
-* Domain-specific constraints may be missing
-* Outputs depend on prompt quality and may vary
-* Multi-intent requirements may still require human interpretation
+* Clarified the requirement
+* Identified missing information
+* Asked relevant follow-up questions
+* Highlighted risks and ambiguity
+* Helped prepare for stakeholder discussion
 
 ---
 
-## 6. Conclusion
+## 5. Summary Comparison
 
-The evaluation demonstrates that **prompt design plays a critical role in improving GenAI workflow performance**.
-
-Compared to a simple baseline, the structured prompt:
-
-* Improves clarity and completeness
-* Reduces ambiguity
-* Produces more actionable outputs
-
-However, human involvement remains necessary to ensure correctness and alignment with business needs.
+| Evaluation Area     | Baseline                   | Improved                                                                 |
+| ------------------- | -------------------------- | ------------------------------------------------------------------------ |
+| Clarity             | Provides a general summary | Rewrites the requirement more clearly                                    |
+| Completeness        | Usually misses key gaps    | Identifies users, goals, data, constraints, scope, metrics, and timeline |
+| Actionability       | Limited next-step value    | Provides concrete questions and risks                                    |
+| Ambiguity Handling  | Weak                       | Strong, especially in Case 6                                             |
+| Business Usefulness | Low to moderate            | High for early-stage requirement clarification                           |
 
 ---
+
+## 6. Limitations Observed
+
+The improved system is more useful than the baseline, but it still has limitations:
+
+* Some questions are somewhat generic across cases.
+* The model may assume common business structures when details are missing.
+* Domain-specific rules, compliance requirements, or technical constraints may still be missed.
+* Human review is required before using the output as a final requirement document.
+
+---
+
+## 7. Conclusion
+
+The evaluation shows that the structured GenAI approach provides clear improvement over a simple baseline summary.
+
+The main value of the improved system is not just generating text, but helping product managers and business analysts think through missing information, stakeholder questions, and project risks.
+
+This makes the tool useful as an early-stage requirement clarification assistant, while still requiring human judgment for final decisions.
