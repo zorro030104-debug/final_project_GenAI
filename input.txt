@@ -1,0 +1,25 @@
+# AI Requirement Clarifier - Test Inputs
+
+# 1. Clear but incomplete requirement
+We need a dashboard for sales performance
+
+# 2. Moderately vague requirement
+Build something to track user activity
+
+# 3. UX-focused improvement
+Improve the checkout experience
+
+# 4. Process efficiency requirement
+Make reporting easier
+
+# 5. Workflow optimization
+We want better approval workflows
+
+# 6. Extremely vague input (edge case)
+Make it better
+
+# 7. Multi-intent requirement
+Build a dashboard and improve reporting for management
+
+# 8. Ambiguous business goal
+Optimize our internal tools for better productivity
