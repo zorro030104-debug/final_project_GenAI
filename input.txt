@@ -1,25 +1,17 @@
-# AI Requirement Clarifier - Test Inputs (Realistic & Source-Inspired)
+# 1. Dashboard requirement
+The dashboard does not show what we need clearly.
 
-# 1. Dashboard requirement (inspired by GitHub feature requests)
-Users have requested a dashboard to monitor system performance and metrics in a more structured way.
+# 2. User activity tracking
+We want to know what users are doing in the system.
 
-# 2. User activity tracking (common product analytics need)
-The product team wants a way to track user activity across the platform.
+# 3. Checkout UX improvement
+Users say checkout is slow and confusing.
 
-# 3. Checkout UX improvement (based on user feedback patterns)
-Users report that the checkout process is slow and confusing, and it needs improvement.
+# 4. Reporting workflow issue
+Our team spends too much time making reports manually.
 
-# 4. Reporting workflow issue (inspired by real reporting limitations)
-The operations team struggles with manual reporting and wants to simplify the reporting process.
+# 5. Extremely vague input
+Make it better.
 
-# 5. Approval workflow (common enterprise scenario)
-The finance team wants better approval workflows for expense requests.
-
-# 6. Extremely vague input (realistic stakeholder behavior)
-A stakeholder simply said: make it better.
-
-# 7. Multi-intent requirement (management request pattern)
-Management wants a dashboard and improved reporting for decision-making.
-
-# 8. Internal tools optimization (common enterprise request)
-The company wants to optimize internal tools to improve employee productivity.
+# 6. Multi-intent requirement
+Management wants a dashboard and better reports for decisions.

@@ -2,31 +2,44 @@
 
 ## 1. Context and Problem
 
-In business (especially enterprise / ToB) product development, requirements are often vague, incomplete, and unstructured.
-This leads to misalignment, repeated clarification, and delays.
+In ToB (Business-to-Business) product development, requirements are often vague, incomplete, and expressed as surface-level problems (e.g., “the system is slow”).
 
-This project focuses on a narrow workflow:
+Unlike consumer products, stakeholders typically describe **outcomes or symptoms**, rather than structured requirements.
+As a result, product managers must interpret and clarify these inputs before they can be used by engineering teams.
 
-→ Turning vague requirements into structured, actionable specifications
+This project focuses on an early-stage workflow:
+
+→ Turning vague stakeholder input into structured, actionable requirements
 
 ---
 
 ## 2. Solution
 
-We built a simple Streamlit-based GenAI tool with two modes:
+We built a simple **Streamlit-based GenAI tool** with two modes:
 
-**Baseline (status quo):**
-Represents a typical real-world workflow where a product manager informally summarizes a requirement without structured guidance.
+### Baseline
 
-**Improved (GenAI structured output):**
-The system generates:
+Represents a typical PM quick response:
+
+* informal interpretation
+* limited structure
+* weak actionability
+
+---
+
+### Improved
+
+Simulates structured product thinking by generating:
 
 * Clarified Requirement
+* Assumptions (separated from facts)
 * Missing Information
 * Clarification Questions
+* Internal Checks
+* Next Actions
 * Risks / Ambiguities
 
-The key idea is that **prompt design enables structured reasoning**, not just summarization.
+> The goal is not just formatting, but improving **requirement clarity and actionability**.
 
 ---
 
@@ -35,93 +48,105 @@ The key idea is that **prompt design enables structured reasoning**, not just su
 This task requires:
 
 * interpreting vague natural language
-* identifying missing information
+* reasoning under missing information
 * generating structured outputs
 
-Traditional rule-based systems or templates cannot reliably handle this variability.
+Traditional templates are static and context-independent, while GenAI enables **adaptive and context-aware clarification**.
 
 ---
 
-## 4. Evaluation Summary
+## 4. Evaluation
 
-We tested the system on 8 realistic requirement inputs (see `input.txt`), inspired by public sources such as GitHub feature requests and product feedback.
+The system is evaluated using 6 realistic requirement inputs across 3 workflow stages:
 
-### Evaluation Criteria
+* After stakeholder request
+* Before PRD writing
+* Before engineering discussion
 
-Outputs are evaluated based on:
+### Evaluation Method
 
-* **Clarity** (is the requirement clearer?)
-* **Completeness** (are missing elements identified?)
-* **Actionability** (can a product team act on it?)
+Improved outputs are scored using an **8-point checklist**, covering:
 
-### Key Result
+* requirement clarity
+* assumption separation
+* missing information detection
+* actionability (questions, next steps)
+* risk identification
 
-| Aspect                 | Baseline (Manual-style summary) | Improved (Structured) |
-| ---------------------- | ------------------------------- | --------------------- |
-| Structure              | ×                               | √                     |
-| Missing info detection | ×                               | √                     |
-| Actionability          | ×                               | √                     |
-| Handling vague input   | ⚠                              | √                     |
+### Key Results
 
-**Conclusion:**
-The structured GenAI approach significantly improves requirement clarity and usability compared to typical informal workflows.
+* Improved outputs consistently achieved **high scores (7–8 / 8)**
+* Baseline outputs were:
 
-- Detailed case-by-case comparison: see `evaluation.md`
-- Example outputs: see `/output`
+  * less structured
+  * less complete
+  * less actionable
+
+More importantly, improvements were observed in:
+
+* handling ambiguous input
+* decomposing multi-intent requirements
+* identifying missing context
+* enabling concrete next steps
+
+👉 Full evaluation details: see `evaluation.md`
 
 ---
 
 ## 5. Limitations
 
-* Outputs can still be somewhat generic
-* Domain-specific constraints may be missing
-* The system relies on input quality
-* **Human review is still required**, especially for complex or regulated domains
-
-The system may perform poorly when:
-
-* requirements contain hidden business rules
-* domain expertise is required but not stated
+* Outputs may still be generic in complex domains
+* Domain-specific knowledge is not always captured
+* The system depends on input quality
+* Human validation is still required
 
 ---
 
-## 6. How to Run
+## 6. Use Case
+
+This tool can be used in early-stage ToB workflows:
+
+* after receiving stakeholder input
+* before writing PRD
+* before discussing with engineering
+
+It helps product managers:
+
+* clarify vague requirements
+* identify missing information
+* prepare for stakeholder alignment
+
+---
+
+## 7. Notes on Data
+
+The test inputs are **synthetic**, but designed to reflect realistic stakeholder communication patterns.
+
+Stakeholders typically express:
+
+* problems rather than requirements
+* incomplete or ambiguous information
+
+This is supported by prior work in product management and requirements engineering
+(Cagan, 2018; Wiegers & Beatty, 2013).
+
+Because real ToB requirements are often confidential, synthetic inputs are used to simulate realistic scenarios.
+
+---
+
+## 8. References
+
+Cagan, M. (2018). *Inspired: How to create tech products customers love* (2nd ed.). Silicon Valley Product Group.
+
+Wiegers, K. E., & Beatty, J. (2013). *Software requirements* (3rd ed.). Microsoft Press.
+
+---
+
+## 9. How to Run
 
 ```bash
 pip install streamlit openai
 streamlit run app.py
 ```
 
-Open in browser(not recommended):
-http://localhost:8501
-
----
-
-## 7. Project Structure
-
-project/
-├── app.py
-├── input.txt
-├── evaluation.md
-├── output/
-│   ├── #1-baseline.png
-│   ├── #1-improved.png
-│   └── ...
-
----
-
-## 8. Notes on Data
-
-The test inputs are synthetic but designed to reflect realistic patterns observed in public sources (e.g., GitHub feature requests, product feedback).
-
-Due to the private nature of real product requirements, synthetic data is used to simulate real-world scenarios.
-
----
-
-## 9. Use Case
-
-This tool can be used as a lightweight assistant in early-stage product workflows to:
-
-* identify missing requirement details
-* prepare for stakeholder discussions
-* reduce ambiguity before specification writing
+Then open: http://localhost:8501

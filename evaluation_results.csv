@@ -1,0 +1,961 @@
+Case,Input,Baseline - After stakeholder request,Baseline - Before PRD writing,Baseline - Before engineering discussion,Improved - After stakeholder request,Improved - Before PRD writing,Improved - Before engineering discussion,Evaluation score
+1,The dashboard does not show what we need clearly.,"### Initial Understanding
+It sounds like the stakeholder is frustrated with the current dashboard's clarity. They likely feel that the data presented isn't easily interpretable or doesn't highlight the key insights they need.
+
+### Possible Cause or Scenario
+1. **Data Overload**: The dashboard might be cluttered with too much information, making it hard for users to find the essential metrics they care about.
+2. **Misaligned Metrics**: The displayed metrics might not align with the stakeholder’s goals or KPIs, leading to confusion about what the data is supposed to convey.
+
+### Quick Suggestion
+Let’s schedule a quick feedback session with the stakeholder to understand their specific needs better. We can then prioritize a few key metrics for clarity and consider a redesign or reorganization of the dashboard based on their input.","### Initial Understanding
+The stakeholder likely feels that the current dashboard lacks clarity or effectiveness in presenting the necessary data. They may be struggling to derive insights or make decisions based on the information displayed.
+
+### Possible Cause or Scenario
+1. **Data Overload**: The dashboard might be cluttered with too much information, making it hard for users to focus on key metrics.
+2. **Misaligned Metrics**: The metrics currently displayed may not align with the stakeholder's goals or the specific insights they need, leading to confusion.
+
+### Quick Suggestion
+Let's schedule a quick session with the stakeholder to gather specific feedback on what they find unclear. This will help us identify the key metrics and visualizations needed to enhance clarity before we move into PRD writing.","### Initial Understanding
+The stakeholder likely feels that the current dashboard lacks clarity or usability in presenting key metrics or insights. They may be struggling to extract actionable information or find it difficult to navigate the interface.
+
+### Possible Cause or Scenario
+1. **Data Overload**: The dashboard might be displaying too much information at once, making it hard to focus on what’s truly important.
+2. **Misalignment with User Needs**: The metrics shown may not align with the stakeholder’s specific goals or KPIs, leading to confusion about what data is relevant.
+
+### Quick Suggestion
+Let’s schedule a quick meeting with the stakeholder to clarify their specific needs and pain points. We can then gather feedback from other users to identify common issues before brainstorming potential design improvements.","### 1. Surface Requirement
+The dashboard does not show what we need clearly.
+
+### 2. Assumptions
+- Users may have specific metrics or data points they expect to see on the dashboard.
+- The current dashboard layout or design may not align with user needs or expectations.
+- Users may be experiencing difficulty interpreting the information presented on the dashboard.
+- The stakeholders may not have clearly defined what ""what we need"" refers to in this context.
+
+### 3. Clarified Requirement Draft
+The dashboard needs to present relevant data and metrics in a clear and understandable format that meets user expectations.
+
+### 4. Missing Information
+- Specific metrics or data points that users want to see on the dashboard.
+- The target user group for the dashboard (e.g., executives, analysts, operational staff).
+- Context in which the dashboard is used (e.g., decision-making, reporting).
+- Scope of changes needed (e.g., layout, data sources, visualization).
+- Constraints such as technical limitations or deadlines.
+- Success criteria for what constitutes a ""clear"" dashboard.
+- Priority level of this requirement compared to other ongoing projects.
+
+### 5. Clarification Questions
+1. What specific metrics or data points do you feel are missing from the dashboard?
+2. Who are the primary users of the dashboard, and what are their roles?
+3. Can you describe the context in which the dashboard is used? What decisions are made based on it?
+4. What aspects of the current dashboard do you find unclear or confusing?
+5. Are there any specific design or layout preferences you have for the dashboard?
+6. How do you define ""clear"" in the context of the dashboard's presentation?
+7. What is the priority of this request compared to other ongoing projects?
+
+### 6. Internal Checks
+- Consult with the design team to understand current dashboard layouts and potential improvements.
+- Check with engineering to assess any technical limitations regarding data visualization.
+- Collaborate with the data team to ensure the necessary data points can be accurately sourced and displayed.
+- Engage with customer support to gather feedback from users who have interacted with the dashboard.
+
+### 7. Next Actions
+1. Schedule a meeting with stakeholders to discuss their specific needs and expectations for the dashboard.
+2. Gather user feedback through surveys or interviews to understand pain points with the current dashboard.
+3. Review existing documentation regarding the dashboard to identify any previously defined requirements or user stories.
+4. Prepare a draft of potential dashboard layouts based on initial feedback for discussion in the next stakeholder meeting.
+
+### 8. Risks / Ambiguities
+- There may be differing interpretations of what ""clear"" means among stakeholders.
+- Stakeholders may have unexpressed needs that could lead to scope creep if not addressed early.
+- Potential misalignment between user expectations and technical capabilities could lead to dissatisfaction.
+- Lack of clarity on priority could result in resource allocation issues if not addressed.","### 1. Surface Requirement
+The dashboard does not show what we need clearly.
+
+### 2. Assumptions
+- Assumption: The stakeholders have specific data or metrics they expect to see on the dashboard.
+- Assumption: Users of the dashboard may include different roles (e.g., executives, analysts) with varying needs.
+- Assumption: The current dashboard layout or design may not align with user expectations or requirements.
+- Assumption: There may be existing data sources that are not being utilized effectively in the current dashboard.
+
+### 3. Clarified Requirement Draft
+The dashboard should present key metrics and data in a clear and user-friendly manner, tailored to the specific needs of different user roles.
+
+### 4. Missing Information
+- User types: Who are the primary users of the dashboard?
+- Context: What specific metrics or data points are considered essential by the stakeholders?
+- Scope: Are there any limitations on the data sources that can be used?
+- Constraints: Are there any design or technical constraints to consider?
+- Success criteria: How will we determine if the dashboard is clear and meets user needs?
+- Priority: What is the urgency of this requirement?
+
+### 5. Clarification Questions
+1. Who are the primary users of the dashboard, and what are their specific needs?
+2. What specific metrics or data points do you feel are missing or unclear?
+3. Are there any existing dashboards or reports that you find effective? What do you like about them?
+4. Are there any design preferences or constraints we should be aware of?
+5. How do you define ""clear"" in the context of the dashboard? What would make it clearer for you?
+6. What is the timeline for implementing these changes?
+
+### 6. Internal Checks
+- Check with the engineering team about the feasibility of integrating new data sources.
+- Consult with the design team to understand best practices for dashboard usability and clarity.
+- Verify with the data team about the availability and reliability of the required data points.
+- Discuss with the support team to understand common user complaints or feedback regarding the current dashboard.
+
+### 7. Next Actions
+1. Schedule a follow-up meeting with stakeholders to gather detailed requirements and clarify questions.
+2. Conduct user interviews or surveys to understand the needs of different user roles.
+3. Review existing dashboards to identify best practices and common pitfalls.
+4. Create a draft wireframe or mockup based on initial feedback to facilitate discussion.
+
+### 8. Risks / Ambiguities
+- There is a risk of misunderstanding what ""clear"" means, leading to misaligned expectations.
+- The requirement may evolve as more stakeholders provide input, leading to scope creep.
+- There may be hidden dependencies on data sources that could complicate implementation.
+- Lack of clarity on user roles could result in a dashboard that does not meet the needs of all users.","### 1. Surface Requirement
+The dashboard does not show what we need clearly.
+
+### 2. Assumptions
+- Users may have different interpretations of what ""need"" means in the context of the dashboard.
+- The dashboard is intended for specific user roles (e.g., managers, analysts) who require different data views.
+- Users may be experiencing issues with data visibility, layout, or the relevance of displayed metrics.
+- The current dashboard may lack certain features or functionalities that users expect.
+- Users may not have received adequate training on how to use the dashboard effectively.
+
+### 3. Clarified Requirement Draft
+The dashboard should present relevant data and metrics in a clear and user-friendly manner, tailored to the specific needs of different user roles.
+
+### 4. Missing Information
+- What specific data or metrics do users need to see on the dashboard?
+- Who are the primary users of the dashboard, and what are their roles?
+- In what context are users accessing the dashboard (e.g., frequency, environment)?
+- Are there any existing pain points or specific examples of what is unclear?
+- What are the success criteria for determining if the dashboard meets user needs?
+- What is the priority level of this requirement?
+
+### 5. Clarification Questions
+1. What specific information or metrics are you looking for on the dashboard?
+2. Who are the primary users of the dashboard, and what are their roles?
+3. Can you provide examples of what you find unclear or insufficient on the current dashboard?
+4. How often do users access the dashboard, and in what context?
+5. Are there any specific features or functionalities you believe are missing?
+6. What would success look like for this dashboard improvement?
+
+### 6. Internal Checks
+- Consult with the engineering team to understand the current limitations of the dashboard.
+- Check with the design team for best practices in dashboard usability and clarity.
+- Review user feedback or support tickets related to the dashboard for common issues.
+- Engage with the data team to ensure the necessary data is available and can be integrated into the dashboard.
+
+### 7. Next Actions
+1. Schedule a meeting with stakeholders to gather detailed requirements and clarify their needs.
+2. Conduct user interviews or surveys to collect feedback on the current dashboard.
+3. Analyze existing user data to identify patterns in dashboard usage and pain points.
+4. Collaborate with the design team to explore potential layout and feature enhancements.
+
+### 8. Risks / Ambiguities
+- Users may have conflicting needs, leading to challenges in prioritizing dashboard features.
+- There may be hidden business rules that dictate what data can be displayed or how it should be presented.
+- Scope creep may occur if additional features are requested during the clarification process.
+- Miscommunication regarding user roles and their specific needs could lead to a dashboard that does not meet expectations.",8
+2,We want to know what users are doing in the system.,"### Initial Understanding
+It seems the stakeholder is looking for insights into user behavior within the system. They might want to understand how users interact with various features, which could help inform product decisions or identify areas for improvement.
+
+### Possible Cause or Scenario
+1. **User Engagement Analysis**: The stakeholder could be concerned about low engagement levels and wants to know which features are being used most frequently and which are being ignored.
+2. **Feature Usage Tracking**: They might be interested in assessing the effectiveness of a recent feature launch to see if it’s meeting user needs.
+
+### Quick Suggestion
+Let's set up a quick meeting with the stakeholder to clarify their specific goals. In parallel, we could start gathering preliminary user analytics data to identify key metrics we can present later, ensuring we’re prepared with some insights when we discuss further.","### Initial Understanding
+The stakeholder likely wants insights into user behavior within the system—essentially, they want to track how users interact with different features or content.
+
+### Possible Cause or Scenario
+1. **User Engagement Analysis**: They may be looking to improve user engagement by understanding which features are most popular or underutilized.
+2. **Performance Metrics**: They could be interested in identifying bottlenecks or pain points in the user journey to enhance overall user experience.
+
+### Quick Suggestion
+Let's set up a quick brainstorming session to clarify specific user actions the stakeholder is interested in. We could also consider implementing basic analytics tracking to gather initial data while we refine the request.","### Initial Understanding
+The stakeholder likely wants insights into user behavior within the system—essentially, they want to understand how users interact with different features or sections of the product.
+
+### Possible Cause or Scenario
+1. **User Engagement Analysis**: They might be looking to improve user engagement by identifying which features are popular and which are underutilized.
+2. **Performance Metrics**: They could be concerned about user retention and want to track user activities to pinpoint drop-off points or areas for improvement.
+
+### Quick Suggestion
+Let’s set up a brainstorming session with the team to discuss potential analytics tools or methods we could implement to track user behavior. We could also consider conducting user interviews or surveys to gather qualitative insights alongside quantitative data.","### 1. Surface Requirement
+""We want to know what users are doing in the system.""
+
+### 2. Assumptions
+- Assumption: The stakeholders are interested in tracking user activity for analytics or monitoring purposes.
+- Assumption: Users may include different roles (e.g., admins, regular users, guests) with varying access levels.
+- Assumption: The system has existing mechanisms for logging user actions, but they may not be fully utilized or analyzed.
+- Assumption: Stakeholders may be looking for insights into user behavior to improve the system or enhance user experience.
+
+### 3. Clarified Requirement Draft
+""Develop a mechanism to track and report user activities within the system to provide insights into user behavior and engagement.""
+
+### 4. Missing Information
+- User types: Who are the specific users we are interested in tracking?
+- Context: What specific actions or behaviors do stakeholders want to monitor (e.g., logins, feature usage, time spent)?
+- Scope: Are there specific areas of the system that are more critical for tracking than others?
+- Constraints: Are there any privacy or compliance considerations that need to be addressed?
+- Success criteria: What does success look like for this tracking initiative?
+- Priority: How urgent is this requirement compared to other ongoing projects?
+
+### 5. Clarification Questions
+1. What specific user actions or behaviors are you most interested in tracking?
+2. Who are the primary users we should focus on for this tracking?
+3. Are there any specific features or areas of the system that you want to prioritize for monitoring?
+4. What are your goals for understanding user behavior? How will this information be used?
+5. Are there any privacy or compliance concerns we need to consider when tracking user activity?
+6. What does success look like for this initiative? Are there specific metrics or outcomes you expect?
+
+### 6. Internal Checks
+- Check with the engineering team to understand the current logging capabilities and any potential limitations.
+- Consult with the data team to determine how user activity data can be analyzed and reported.
+- Verify with the legal or compliance team to ensure that tracking user activity complies with relevant regulations.
+- Discuss with the support team to understand any common user issues that may relate to user behavior.
+
+### 7. Next Actions
+1. Schedule a follow-up meeting with stakeholders to clarify the missing information and gather detailed requirements.
+2. Prepare a draft outline of potential user actions to track based on initial assumptions and stakeholder input.
+3. Gather feedback from internal teams (engineering, data, compliance) on the feasibility of tracking user activities.
+
+### 8. Risks / Ambiguities
+- There may be misunderstandings regarding the specific user actions to track, leading to incomplete or irrelevant data collection.
+- Hidden business rules may exist regarding user privacy that could complicate tracking efforts.
+- Scope creep could occur if stakeholders request additional features or data points after initial requirements are set.
+- Human review may be necessary to interpret user behavior accurately, which could introduce delays or biases in analysis.","### 1. Surface Requirement
+""We want to know what users are doing in the system.""
+
+### 2. Assumptions
+- Users are interacting with the system in various ways that need to be tracked.
+- The stakeholders are interested in understanding user behavior for improving the system or user experience.
+- The requirement may pertain to specific user actions, events, or overall usage patterns.
+- The stakeholders may have a particular audience or user segment in mind (e.g., new users, power users).
+- There may be different levels of detail required (e.g., high-level summaries vs. granular data).
+
+### 3. Clarified Requirement Draft
+""Identify and track user interactions within the system to understand user behavior and engagement patterns.""
+
+### 4. Missing Information
+- Who are the specific users we are tracking (e.g., all users, specific roles)?
+- What specific actions or interactions are of interest (e.g., clicks, time spent, feature usage)?
+- In what context will this information be used (e.g., product improvement, user support)?
+- What is the desired level of detail for the tracking (e.g., real-time data, aggregated reports)?
+- What are the success criteria for this tracking initiative?
+- What is the priority of this requirement relative to other initiatives?
+
+### 5. Clarification Questions
+1. Who are the target users we want to monitor in the system?
+2. What specific user actions or behaviors are you most interested in tracking?
+3. How will the information about user activities be used to inform decisions?
+4. What level of detail do you require in the tracking data (e.g., high-level summaries vs. detailed logs)?
+5. Are there any specific timeframes or contexts in which this tracking is particularly important?
+6. What are the key outcomes or success metrics you envision for this tracking initiative?
+7. Is there a priority level for this requirement compared to other ongoing projects?
+
+### 6. Internal Checks
+- Consult with the engineering team to understand the feasibility of tracking user interactions.
+- Verify with the data team about existing analytics capabilities and tools.
+- Discuss with the operations team regarding any potential impacts on system performance.
+- Check with the support team to see if they have insights on user behavior that could inform this requirement.
+
+### 7. Next Actions
+- Schedule a follow-up meeting with stakeholders to clarify the requirement and gather more details.
+- Prepare a draft of potential user actions to discuss with stakeholders for validation.
+- Research existing tools or methods for tracking user interactions that could be leveraged.
+
+### 8. Risks / Ambiguities
+- There may be a misunderstanding about what ""user activities"" encompasses, leading to misaligned expectations.
+- The requirement could lead to scope creep if not clearly defined, as stakeholders might want to track additional metrics later.
+- There may be hidden business rules regarding user privacy and data collection that need to be addressed.
+- The lack of defined success criteria could lead to difficulties in measuring the effectiveness of the tracking initiative.","### 1. Surface Requirement
+""We want to know what users are doing in the system.""
+
+### 2. Assumptions
+- Assumption: Users interact with the system in various ways that can be tracked.
+- Assumption: The stakeholders are interested in both quantitative and qualitative user activities.
+- Assumption: The system has the capability to log user actions or events.
+- Assumption: Stakeholders may want to analyze user behavior for different purposes, such as improving user experience or identifying training needs.
+
+### 3. Clarified Requirement Draft
+""Identify and track user activities within the system to gain insights into user behavior and engagement.""
+
+### 4. Missing Information
+- User type: Who are the users (e.g., customers, internal staff, admins)?
+- Context: What specific activities or interactions are of interest (e.g., feature usage, navigation paths)?
+- Scope: Are there specific areas of the system that should be prioritized for tracking?
+- Constraints: Are there any privacy or compliance considerations for tracking user activities?
+- Success criteria: What does success look like for this tracking initiative?
+- Priority: How urgent is this requirement compared to other initiatives?
+
+### 5. Clarification Questions
+1. Who are the primary users we are interested in tracking?
+2. What specific user activities or interactions do you want to focus on?
+3. Are there particular areas of the system where user behavior tracking is more critical?
+4. What are the intended use cases for the insights gained from tracking user activities?
+5. Are there any privacy or compliance issues we need to consider when tracking user behavior?
+6. How will you define success for this tracking initiative?
+
+### 6. Internal Checks
+- Check with engineering to understand the feasibility of tracking user activities and any existing logging capabilities.
+- Consult with the data team to determine how user activity data will be collected, stored, and analyzed.
+- Verify with the compliance team regarding any legal or regulatory implications of tracking user behavior.
+- Discuss with customer support to understand if there are common user issues that tracking could help address.
+
+### 7. Next Actions
+1. Schedule a follow-up meeting with stakeholders to clarify the missing information and answer the clarification questions.
+2. Gather input from relevant internal teams (engineering, data, compliance) to assess the current capabilities and limitations for tracking user activities.
+3. Create a draft plan outlining potential methods for tracking user activities based on stakeholder input and internal checks.
+
+### 8. Risks / Ambiguities
+- There may be misunderstandings regarding what ""user activities"" encompass, leading to misaligned expectations.
+- Hidden business rules may exist regarding data retention or user consent that could impact tracking efforts.
+- Scope creep could occur if additional user activities are requested after the initial tracking requirements are defined.
+- The need for human review may arise if the data collected requires interpretation or if there are anomalies in user behavior that need further investigation.",8
+3,Users say checkout is slow and confusing.,"### Initial Understanding
+The stakeholder likely means that users are experiencing delays during the checkout process and may be struggling with the interface or steps involved, leading to frustration and potential cart abandonment.
+
+### Possible Cause or Scenario
+1. **Technical Issues**: There could be backend performance problems causing slow response times during checkout, such as server load or inefficient code.
+2. **User Experience Flaws**: The checkout flow might be overly complicated, with too many steps or unclear instructions, leading to confusion.
+
+### Quick Suggestion
+Let’s set up a quick user feedback session to gather specific pain points and then run some performance tests on the checkout process. This will help us identify both the technical and UX issues contributing to the problem.","### Initial Understanding
+The stakeholder is likely referring to user feedback indicating that the checkout process is taking too long and might not be user-friendly. This could mean there are too many steps, unclear instructions, or performance issues causing delays.
+
+### Possible Cause or Scenario
+1. **Technical Performance Issues**: The checkout page may be loading slowly due to backend bottlenecks or heavy front-end assets, leading to frustration among users.
+2. **User Experience Flaws**: The layout or flow of the checkout process might be confusing, with unclear calls to action or unnecessary steps that complicate the experience.
+
+### Quick Suggestion
+Let’s gather more specific user feedback through surveys or usability tests to pinpoint the exact pain points. In parallel, we should analyze the current performance metrics of the checkout process to identify any technical issues. This will help us prioritize improvements effectively before drafting the PRD.","### Initial Understanding
+The stakeholder likely means that users are experiencing delays during the checkout process and may be unsure about the steps they need to take to complete their purchases. This could be impacting conversion rates and overall user satisfaction.
+
+### Possible Cause or Scenario
+1. **Technical Issues:** There could be performance bottlenecks in the checkout system, such as slow server response times or inefficient code that needs optimization.
+2. **User Experience Flaws:** The checkout flow might be overly complicated, with too many steps or unclear instructions, leading to user frustration and abandonment.
+
+### Quick Suggestion
+Let's gather user feedback through surveys or usability testing to pinpoint specific pain points in the checkout process. This will help us prioritize improvements and ensure we're addressing the right issues before diving into engineering discussions.","### 1. Surface Requirement
+""Users say checkout is slow and confusing.""
+
+### 2. Assumptions
+- Assumption: Users are experiencing delays during the checkout process.
+- Assumption: The confusion may stem from the layout, number of steps, or information presented during checkout.
+- Assumption: Users may have varying levels of familiarity with the checkout process.
+- Assumption: The feedback is coming from a specific user segment (e.g., new users vs. returning users).
+- Assumption: There may be technical issues contributing to the perceived slowness.
+
+### 3. Clarified Requirement Draft
+Users need an improved checkout experience that is faster and more intuitive, addressing both speed and clarity in the process.
+
+### 4. Missing Information
+- User type: Who are the users providing this feedback (e.g., new customers, returning customers)?
+- Context: Under what circumstances are users finding the checkout slow and confusing (e.g., specific devices, browsers, or times)?
+- Scope: Which parts of the checkout process are considered slow or confusing?
+- Constraints: Are there any technical limitations or existing systems that must be considered?
+- Success criteria: How will we measure improvements in speed and clarity?
+- Priority: How urgent is this issue compared to other ongoing projects?
+
+### 5. Clarification Questions
+1. Can you provide specific examples of what users find slow or confusing during the checkout process?
+2. Are there particular user segments that are more affected by these issues?
+3. What devices or browsers are users primarily using when they experience these problems?
+4. Have there been any recent changes to the checkout process that may have contributed to these issues?
+5. What feedback have you received from users regarding specific steps in the checkout process?
+6. How do you currently measure the speed and clarity of the checkout process?
+
+### 6. Internal Checks
+- Check with the engineering team to understand any known technical issues affecting checkout performance.
+- Consult the data team to analyze user behavior during the checkout process and identify drop-off points.
+- Engage with customer support to gather more qualitative feedback from users who have reported issues.
+- Review any existing analytics or performance metrics related to the checkout process.
+
+### 7. Next Actions
+1. Schedule a meeting with stakeholders to discuss the clarified requirement and gather more detailed feedback.
+2. Conduct user interviews or surveys to collect specific insights about the checkout experience.
+3. Analyze existing data to identify patterns in checkout abandonment or user confusion.
+4. Collaborate with the UX/UI team to brainstorm potential design improvements for the checkout process.
+
+### 8. Risks / Ambiguities
+- There may be a misunderstanding of what ""slow"" and ""confusing"" mean to different users.
+- The feedback may not represent the broader user base, leading to changes that do not address the core issues.
+- There could be hidden dependencies on other systems or processes that complicate improvements.
+- Scope creep may occur if additional features or changes are requested during the improvement process.","### 1. Surface Requirement
+Users say checkout is slow and confusing.
+
+### 2. Assumptions
+- Assumption: Users are experiencing delays during the checkout process, possibly due to technical performance issues or user interface design.
+- Assumption: The confusion may stem from unclear instructions, layout, or the number of steps involved in the checkout process.
+- Assumption: Users may have varying levels of familiarity with the checkout process, affecting their perception of speed and clarity.
+- Assumption: The feedback is coming from a subset of users, not necessarily representative of the entire user base.
+
+### 3. Clarified Requirement Draft
+Users have reported that the checkout process is perceived as slow and confusing, indicating a need for improvements in both performance and user experience.
+
+### 4. Missing Information
+- User type: Who are the users providing this feedback (e.g., new users, returning users)?
+- Context: Under what circumstances are users finding the checkout slow and confusing (e.g., specific devices, browsers, or times of day)?
+- Scope: What specific elements of the checkout process are users referring to (e.g., loading times, number of steps, clarity of instructions)?
+- Constraints: Are there any technical limitations or design guidelines that must be adhered to?
+- Success criteria: How will we measure improvements in speed and clarity?
+- Priority: How critical is this issue compared to other ongoing projects or improvements?
+
+### 5. Clarification Questions
+1. Can you provide specific examples or scenarios where users have reported the checkout process being slow or confusing?
+2. What metrics or feedback mechanisms are currently in place to assess the checkout experience?
+3. Are there specific user segments that are more vocal about these issues?
+4. What are the primary tasks users are trying to accomplish during checkout?
+5. Have there been any recent changes to the checkout process that might have contributed to these issues?
+6. What are the key pain points users have mentioned regarding the checkout process?
+
+### 6. Internal Checks
+- Check with the engineering team to understand current performance metrics of the checkout process.
+- Consult the UX/UI team to review the current design and identify potential areas of confusion.
+- Engage with customer support to gather more detailed user feedback and common issues reported.
+- Review analytics data to identify drop-off points in the checkout process.
+
+### 7. Next Actions
+1. Schedule a meeting with stakeholders to discuss the clarified requirement and gather more detailed feedback.
+2. Conduct user interviews or surveys to gather qualitative data on the checkout experience.
+3. Analyze existing data from the checkout process to identify performance bottlenecks and user behavior patterns.
+4. Collaborate with the UX/UI team to brainstorm potential design improvements based on user feedback.
+
+### 8. Risks / Ambiguities
+- There may be a misunderstanding of what ""slow"" and ""confusing"" specifically mean to users, leading to misaligned priorities.
+- Hidden business rules or constraints may affect potential solutions that are not immediately evident.
+- Scope creep could occur if additional features or changes are requested during the improvement process.
+- The need for human review may arise if the proposed changes significantly alter the user experience or require new training for support staff.","### 1. Surface Requirement
+Users say checkout is slow and confusing.
+
+### 2. Assumptions
+- Assumption: Users are experiencing delays during the checkout process, which may be due to technical performance issues or user interface design.
+- Assumption: The user base includes both new and returning customers, which may affect their familiarity with the checkout process.
+- Assumption: Users may have different devices and internet speeds, impacting their experience of the checkout process.
+- Assumption: The term ""confusing"" could refer to unclear navigation, insufficient instructions, or unexpected steps in the checkout flow.
+
+### 3. Clarified Requirement Draft
+Investigate and address user concerns regarding the checkout process, focusing on performance speed and clarity of navigation to enhance the overall user experience.
+
+### 4. Missing Information
+- User type: Are the users primarily new customers or returning customers?
+- Context: What specific steps in the checkout process are perceived as slow or confusing?
+- Scope: Are there specific devices or browsers where the issues are more pronounced?
+- Constraints: Are there any technical limitations we need to consider during improvements?
+- Success criteria: How will we measure improvements in speed and clarity?
+- Priority: Is this a high-priority issue compared to other ongoing projects?
+
+### 5. Clarification Questions
+1. Can you specify which parts of the checkout process users find slow or confusing?
+2. Are there particular user segments (e.g., new vs. returning customers) that report these issues more frequently?
+3. What devices or browsers are users primarily using when they experience these issues?
+4. Have there been any specific user feedback or comments that highlight the confusing aspects of the checkout process?
+5. What is the current performance benchmark for the checkout process, and what are the desired improvements?
+6. Are there any existing analytics or data that provide insight into user behavior during checkout?
+
+### 6. Internal Checks
+- Check with the engineering team to understand current performance metrics of the checkout process.
+- Consult the UX/UI design team for insights on the current design and any known usability issues.
+- Review analytics data to identify drop-off rates and user behavior during the checkout process.
+- Engage with customer support to gather common complaints or feedback related to checkout.
+
+### 7. Next Actions
+1. Schedule a meeting with stakeholders to clarify the requirement and gather additional details.
+2. Conduct user interviews or surveys to gather qualitative feedback on the checkout experience.
+3. Analyze existing data to identify patterns or specific areas of concern in the checkout process.
+4. Collaborate with the UX/UI team to explore potential design improvements.
+
+### 8. Risks / Ambiguities
+- There may be a misunderstanding of what ""slow"" means; it could refer to actual loading times or the number of steps in the process.
+- The term ""confusing"" is subjective and may vary significantly among users; further clarification is needed.
+- Potential for scope creep if additional features or changes are suggested without a clear focus on the original issues.
+- There may be hidden business rules or constraints that could affect proposed changes, such as payment processing requirements or integration with other systems.",8
+4,Our team spends too much time making reports manually.,"### Initial Understanding
+The stakeholder likely means that the current reporting process is inefficient and time-consuming, leading to frustration and potential delays in decision-making.
+
+### Possible Cause or Scenario
+1. **Manual Data Entry**: The team might be pulling data from multiple sources and entering it manually into reports, which is both tedious and prone to errors.
+2. **Lack of Automation Tools**: There may be limited or no use of automation tools that could streamline data collection and reporting processes.
+
+### Quick Suggestion
+Let’s set up a quick brainstorming session to explore potential automation tools or reporting software that could help. We could also review the current reporting process to identify specific bottlenecks.","### Initial Understanding
+The stakeholder likely means that the current process for generating reports is inefficient and time-consuming. They might be looking for a way to automate or streamline this process to save time and resources.
+
+### Possible Cause or Scenario
+1. **Manual Data Collection**: The team may be pulling data from multiple sources manually, leading to a lot of repetitive work.
+2. **Lack of Tools**: There might be inadequate tools or software in place to facilitate automated reporting, resulting in reliance on spreadsheets or other manual methods.
+
+### Quick Suggestion
+Let’s set up a quick brainstorming session to identify the key pain points in the current reporting process. We can also explore potential tools or automation solutions that could help streamline this workflow before we dive into a more formal PRD.","### Initial Understanding
+The stakeholder likely feels overwhelmed by the amount of time the team spends on manual reporting. They may be looking for ways to streamline this process, reduce effort, and improve efficiency.
+
+### Possible Cause or Scenario
+1. **Inefficient Reporting Tools**: The current tools might be outdated or not user-friendly, leading to excessive manual data entry and report generation.
+2. **Lack of Automation**: There could be opportunities for automation that haven't been explored, meaning the team is stuck doing repetitive tasks instead of focusing on analysis.
+
+### Quick Suggestion
+Let’s set up a quick brainstorming session with the team to identify the specific pain points in the reporting process. From there, we can explore potential tools or automation solutions that could save time and improve accuracy.","### 1. Surface Requirement
+""Our team spends too much time making reports manually.""
+
+### 2. Assumptions
+- Assumption: The stakeholders are referring to a specific type of report that is currently being generated manually.
+- Assumption: The team is experiencing inefficiencies in the reporting process that could be improved with automation.
+- Assumption: The stakeholders may not have a clear understanding of the time spent on reporting or the specific tasks involved.
+- Assumption: The reports are critical for decision-making and may involve multiple data sources.
+
+### 3. Clarified Requirement Draft
+The team needs a solution to reduce the time spent on generating reports manually by automating the reporting process.
+
+### 4. Missing Information
+- User Type: Who exactly is creating these reports (e.g., analysts, managers)?
+- Context: What types of reports are being generated? Are they financial, operational, or performance-related?
+- Scope: How many reports are generated on a regular basis, and what is the frequency of these reports?
+- Constraints: Are there any specific tools or systems currently in use that the new solution must integrate with?
+- Success Criteria: How will we measure the reduction in time spent on report generation?
+- Priority: How urgent is this requirement compared to other tasks or projects?
+
+### 5. Clarification Questions
+1. What specific types of reports are you referring to?
+2. Can you describe the current process for creating these reports?
+3. Who is responsible for generating these reports, and what tools do they currently use?
+4. What are the main pain points in the manual reporting process?
+5. What data sources are involved in the reports?
+6. How often are these reports generated, and what is the expected turnaround time?
+7. Are there any existing tools or systems that we need to consider for integration?
+8. What would success look like for this automation project?
+
+### 6. Internal Checks
+- Check with the engineering team to understand the feasibility of automating the reporting process.
+- Consult with data teams to identify the data sources and formats currently used in reports.
+- Discuss with operations to understand the workflow and any potential bottlenecks in the reporting process.
+- Engage with support to gather insights on common issues faced by users regarding report generation.
+
+### 7. Next Actions
+1. Schedule a follow-up meeting with the stakeholders to gather more detailed information based on the clarification questions.
+2. Conduct a workshop with the team involved in report generation to map out the current process and identify inefficiencies.
+3. Research existing reporting tools or automation solutions that could potentially meet the needs identified.
+
+### 8. Risks / Ambiguities
+- There may be a misunderstanding of what ""too much time"" means, leading to different expectations about the level of automation required.
+- Hidden business rules regarding report formats or data accuracy may complicate automation efforts.
+- Scope creep could occur if additional reporting needs are identified during the clarification process.
+- The need for human review of reports may not be accounted for, impacting the perceived efficiency gains.","### 1. Surface Requirement
+""Our team spends too much time making reports manually.""
+
+### 2. Assumptions
+- Assumption: The team currently relies on manual processes for report generation.
+- Assumption: The stakeholders believe that automating report generation will save time.
+- Assumption: The reports are generated for internal use, but the specific audience is unclear.
+- Assumption: The reports may vary in complexity and frequency.
+- Assumption: There may be existing tools or systems in place that could be leveraged for automation.
+
+### 3. Clarified Requirement Draft
+The team needs a solution to automate the report generation process to reduce the time spent on manual reporting tasks.
+
+### 4. Missing Information
+- User type: Who specifically is involved in the report generation process?
+- Context: What types of reports are being generated, and what data sources are used?
+- Scope: What is the volume and frequency of reports needed?
+- Constraints: Are there any specific tools or systems that must be integrated or avoided?
+- Success criteria: How will we measure the reduction in time spent on report generation?
+- Priority: How critical is this requirement compared to other ongoing projects?
+
+### 5. Clarification Questions
+1. Who are the primary users involved in the report generation process?
+2. What specific types of reports are being created, and what data do they include?
+3. How often are these reports generated, and what is the typical turnaround time?
+4. Are there existing tools or software currently being used for report generation?
+5. What specific challenges are you facing with the current manual reporting process?
+6. What would an ideal automated reporting solution look like for your team?
+7. How do you currently measure the time spent on report generation?
+
+### 6. Internal Checks
+- Check with the engineering team regarding the feasibility of automating report generation.
+- Consult with the data team to understand the data sources and formats required for reports.
+- Discuss with operations to identify any existing workflows that could be impacted by automation.
+- Engage with support to understand common issues or feedback related to report generation.
+
+### 7. Next Actions
+1. Schedule a follow-up meeting with stakeholders to gather detailed information based on the clarification questions.
+2. Conduct a workshop with the team to map out the current report generation process and identify pain points.
+3. Research existing tools or solutions that could facilitate report automation.
+4. Prepare a draft of user personas based on the information gathered to better understand the target audience.
+
+### 8. Risks / Ambiguities
+- There may be differing interpretations of what ""too much time"" means, leading to varying expectations for the solution.
+- The scope of report types and their complexity may not be fully understood, leading to incomplete requirements.
+- Stakeholders may have hidden assumptions about the capabilities of existing tools or systems.
+- There is a risk of scope creep if additional reporting needs are identified after the initial requirement is defined.","### 1. Surface Requirement
+""Our team spends too much time making reports manually.""
+
+### 2. Assumptions
+- Assumption: The team is currently using a manual process for report generation.
+- Assumption: The reports are likely generated frequently and may involve multiple data sources.
+- Assumption: The stakeholders may be experiencing frustration due to inefficiencies in the reporting process.
+- Assumption: There may be specific types of reports that are more time-consuming than others.
+- Assumption: The team has access to the necessary data but lacks efficient tools for report generation.
+
+### 3. Clarified Requirement Draft
+The team requires a solution to automate the report generation process to reduce the time spent on manual reporting tasks.
+
+### 4. Missing Information
+- User type: Who specifically is creating these reports (e.g., analysts, managers)?
+- Context: What types of reports are being generated, and what data sources are involved?
+- Scope: Are there specific reports that are prioritized for automation?
+- Constraints: Are there any limitations regarding tools or technologies currently in use?
+- Success criteria: How will the effectiveness of the new solution be measured?
+- Priority: How urgent is the need for this automation?
+
+### 5. Clarification Questions
+1. Who is primarily responsible for creating these reports?
+2. What types of reports are being generated manually, and how often?
+3. What specific challenges are you facing with the current manual reporting process?
+4. Are there any existing tools or systems that the team currently uses for reporting?
+5. What data sources are involved in the report generation?
+6. What would success look like for an automated reporting solution?
+7. Are there any specific deadlines or timeframes for implementing this solution?
+
+### 6. Internal Checks
+- Check with the engineering team regarding the feasibility of automating report generation.
+- Consult with the data team to understand the data sources and any potential integration challenges.
+- Discuss with operations to identify any existing workflows that may be impacted by automation.
+- Review with support to understand common issues faced by users in the current reporting process.
+
+### 7. Next Actions
+1. Schedule a follow-up meeting with stakeholders to gather detailed information based on the clarification questions.
+2. Conduct a workshop with the team to map out the current reporting process and identify pain points.
+3. Research existing tools or solutions that could potentially address the reporting automation need.
+4. Prepare a draft of the PRD based on the clarified requirement and insights gathered.
+
+### 8. Risks / Ambiguities
+- There may be a misunderstanding of the specific reports that need automation, leading to misalignment on priorities.
+- Hidden business rules regarding report formats or data usage may complicate automation efforts.
+- Scope creep could occur if additional reporting needs are identified after the project has started.
+- The need for human review in certain reporting scenarios may not be clearly defined, impacting automation effectiveness.",8
+5,Make it better.,"### Initial Understanding
+The stakeholder seems to be looking for a solution to an issue or opportunity they’ve identified but hasn’t provided much detail. They might want to improve a current process, launch a new feature, or address a customer pain point.
+
+### Possible Cause or Scenario
+1. **Feature Enhancement**: They could be suggesting that a current feature is lacking and needs improvement based on user feedback.
+2. **Market Opportunity**: They might have noticed a gap in the market or a competitor's offering that we need to respond to quickly.
+
+### Quick Suggestion
+Let’s set up a quick brainstorming session with the team to gather insights and clarify the request. We can also reach out to the stakeholder for a brief chat to get more context and ensure we’re aligned on their expectations.","### Initial Understanding
+The stakeholder likely wants to enhance user engagement or improve a feature, but their request is too vague to pinpoint specific needs or objectives.
+
+### Possible Cause or Scenario
+1. **Feature Enhancement**: They might be thinking about adding new functionalities to an existing product feature that users find valuable but underutilized.
+2. **User Feedback**: They could be responding to general user feedback suggesting that something is missing or could be improved, without providing specifics.
+
+### Quick Suggestion
+Let's set up a quick brainstorming session with the team to gather insights and potential ideas. We can also reach out to the stakeholder for more context, perhaps by asking targeted questions to narrow down their request. This way, we can ensure we're aligned before moving into PRD writing.","### Initial Understanding
+The stakeholder might be hinting at a need for a new feature or improvement, but their request lacks specifics. They could be looking for something that enhances user experience or addresses a pain point.
+
+### Possible Cause or Scenario
+1. **User Feedback**: They may have received feedback from users indicating frustration with a current feature, prompting a desire for enhancement.
+2. **Competitive Pressure**: They could be aware of competitors offering similar features and want us to catch up or differentiate ourselves.
+
+### Quick Suggestion
+Let’s set up a quick brainstorming session with the team to explore potential areas for improvement. We can also gather some user feedback to get more context on what might be needed before we engage in deeper discussions.","### 1. Surface Requirement
+""Make it better.""
+
+### 2. Assumptions
+- Assumption: The stakeholder is referring to an existing product or feature that requires improvement.
+- Assumption: The stakeholder has specific areas of concern or aspects of the product in mind but has not articulated them.
+- Assumption: Users of the product may have provided feedback that indicates areas for enhancement.
+- Assumption: The term ""better"" could refer to usability, performance, functionality, or user satisfaction.
+
+### 3. Clarified Requirement Draft
+""Identify specific areas of the existing product that require improvement based on user feedback and stakeholder insights, and propose actionable enhancements.""
+
+### 4. Missing Information
+- User type: Who are the primary users affected by this requirement?
+- Context: What specific aspects of the product are perceived as needing improvement?
+- Scope: Are there particular features or functionalities that should be prioritized for enhancement?
+- Constraints: Are there any budgetary, technical, or timeline constraints to consider?
+- Success criteria: How will we measure whether the improvements are successful?
+- Priority: What is the urgency of this request?
+
+### 5. Clarification Questions
+1. What specific areas of the product do you believe need improvement?
+2. Are there particular user pain points or feedback that have prompted this request?
+3. Who are the primary users we should focus on for these improvements?
+4. Are there any constraints (budget, timeline, resources) we should be aware of?
+5. How do you define ""better"" in this context? What does success look like?
+6. Are there any existing metrics or data that can help us understand the current performance of the product?
+
+### 6. Internal Checks
+- Check with the engineering team to understand the feasibility of potential improvements.
+- Consult the data team for any existing user feedback or usage metrics related to the product.
+- Engage with the support team to gather insights on common user issues or complaints.
+- Verify with the design team if there are any ongoing design initiatives that could align with this request.
+
+### 7. Next Actions
+1. Schedule a follow-up meeting with the stakeholder to discuss the clarification questions.
+2. Gather and review any existing user feedback or data related to the product.
+3. Prepare a summary of potential areas for improvement based on initial stakeholder insights and user feedback.
+4. Engage relevant internal teams to gather their input on the feasibility of potential enhancements.
+
+### 8. Risks / Ambiguities
+- Risk of misunderstanding the stakeholder's intent behind ""make it better,"" leading to misaligned priorities.
+- Ambiguity regarding which specific aspects of the product should be improved, potentially resulting in scope creep.
+- Hidden business rules or constraints that may not be disclosed initially, affecting the proposed enhancements.
+- The possibility that user feedback may be anecdotal and not representative of the broader user base, leading to misguided improvements.","### 1. Surface Requirement
+""Make it better.""
+
+### 2. Assumptions
+- Assumption: The stakeholder is referring to an existing product or feature that requires improvement.
+- Assumption: ""Better"" could mean improved performance, usability, functionality, or user satisfaction.
+- Assumption: The stakeholder has a specific audience or user group in mind, but this is not explicitly stated.
+- Assumption: There may be specific pain points or issues that users are currently experiencing, but these are not detailed.
+
+### 3. Clarified Requirement Draft
+""Identify and implement enhancements to the existing product/feature to improve user experience and overall performance based on user feedback and data analysis.""
+
+### 4. Missing Information
+- User type: Who are the primary users of the product/feature?
+- Context: In what scenarios are users currently facing issues?
+- Specific areas for improvement: What aspects of the product/feature need to be made ""better""?
+- Scope: Are there specific functionalities or components that should be prioritized for improvement?
+- Constraints: Are there any budgetary, technical, or timeline constraints?
+- Success criteria: How will we measure whether the improvements are successful?
+- Priority: How urgent is this requirement compared to other initiatives?
+
+### 5. Clarification Questions
+1. What specific aspects of the product/feature do you believe need improvement?
+2. Who are the primary users affected by the current issues?
+3. Can you provide examples of user feedback or data that highlight the need for improvement?
+4. Are there any specific functionalities or features you want us to focus on?
+5. What are the expected outcomes or success criteria for this improvement?
+6. Are there any constraints (budget, timeline, resources) we should be aware of?
+7. How does this improvement align with our overall product strategy or goals?
+
+### 6. Internal Checks
+- Check with the engineering team to understand any technical limitations or challenges related to the existing product/feature.
+- Consult the data analytics team to gather insights on user behavior and feedback related to the product/feature.
+- Discuss with the customer support team to identify common issues reported by users.
+- Review any existing documentation or user research that may provide context on the current state of the product/feature.
+
+### 7. Next Actions
+1. Schedule a meeting with the stakeholder to discuss and clarify the requirement in detail.
+2. Gather user feedback and data analytics to inform potential areas for improvement.
+3. Compile insights from internal teams (engineering, data, support) to understand the current landscape.
+4. Draft a more detailed requirement based on the clarified information and insights gathered.
+
+### 8. Risks / Ambiguities
+- Risk of misunderstanding the stakeholder's intent behind ""make it better,"" leading to misaligned priorities.
+- Potential for scope creep if specific areas for improvement are not clearly defined.
+- Ambiguity around user needs may lead to ineffective enhancements that do not address the core issues.
+- Hidden business rules or constraints may emerge during development, impacting timelines and resources.","### 1. Surface Requirement
+""Make it better.""
+
+### 2. Assumptions
+- Assumption: The stakeholder is referring to an existing product or feature that requires improvement.
+- Assumption: The term ""better"" implies enhancements in usability, performance, or functionality, but the specific areas are unclear.
+- Assumption: The stakeholder has a specific user base in mind, but it is not explicitly stated.
+- Assumption: The improvement may relate to user feedback or performance metrics, though these are not provided.
+
+### 3. Clarified Requirement Draft
+Identify and implement enhancements to an existing product or feature to improve its overall effectiveness and user satisfaction.
+
+### 4. Missing Information
+- User type: Who are the primary users affected by this requirement?
+- Context: What specific aspects of the product or feature are perceived as needing improvement?
+- Scope: Are there particular functionalities or user journeys that should be prioritized?
+- Constraints: Are there any budgetary, technical, or resource limitations?
+- Success criteria: How will we measure whether the improvements are successful?
+- Priority: How urgent is this requirement compared to other ongoing projects?
+
+### 5. Clarification Questions
+1. What specific product or feature are you referring to when you say ""make it better""?
+2. What aspects of the product do you feel need improvement (e.g., usability, performance, features)?
+3. Who are the primary users impacted by these improvements?
+4. Are there any specific user feedback or performance metrics that highlight the need for improvement?
+5. What is the desired outcome or success criteria for this improvement?
+6. Are there any constraints or limitations we should be aware of while making these improvements?
+7. How does this requirement rank in priority compared to other ongoing projects?
+
+### 6. Internal Checks
+- Check with the engineering team to understand the feasibility of potential improvements.
+- Consult with the UX/UI team for insights on user experience and design considerations.
+- Review user feedback or support tickets to identify common pain points.
+- Engage with the data team to analyze performance metrics related to the product or feature in question.
+
+### 7. Next Actions
+1. Schedule a meeting with the stakeholder to gather more detailed information based on the clarification questions.
+2. Compile existing user feedback and performance metrics to present during the meeting.
+3. Prepare a draft of potential areas for improvement to facilitate discussion with the stakeholder.
+4. Engage relevant internal teams to gather preliminary insights on the feasibility of potential improvements.
+
+### 8. Risks / Ambiguities
+- The phrase ""make it better"" is subjective and could lead to varying interpretations among team members.
+- Without clear success criteria, it may be difficult to assess the effectiveness of the improvements.
+- There is a risk of scope creep if the requirements are not well-defined and prioritized.
+- Potential hidden business rules may exist that could impact the improvement process but have not been disclosed.",8
+6,Management wants a dashboard and better reports for decisions.,"### Initial Understanding
+It sounds like management is looking for a way to visualize key metrics and insights that can aid in decision-making. They likely want a centralized place to track performance and trends rather than sifting through raw data.
+
+### Possible Cause or Scenario
+1. **Lack of Visibility:** Management might be struggling to get a clear picture of current performance metrics, leading to inefficient decision-making.
+2. **Data Overload:** They may have access to too much data but need a streamlined, user-friendly dashboard that highlights the most important KPIs.
+
+### Quick Suggestion
+Let's set up a quick brainstorming session with key stakeholders to identify the critical metrics they want to track. From there, we can sketch out a rough dashboard concept and prioritize features based on their immediate needs.","### Initial Understanding
+It sounds like the stakeholder is looking for a way to visualize data and insights that can aid in decision-making. They likely want a user-friendly dashboard that aggregates key metrics and trends, along with detailed reports that provide deeper analysis.
+
+### Possible Cause or Scenario
+1. **Data Overload**: The management team might be overwhelmed with data from various sources and is seeking a consolidated view to make sense of it all.
+2. **Decision-Making Gaps**: There could be a perceived lack of actionable insights from current reports, prompting a need for more intuitive and insightful reporting tools.
+
+### Quick Suggestion
+Next, I recommend organizing a quick brainstorming session with key stakeholders to gather specific metrics and insights they find valuable. This will help us define the core features for the dashboard and reporting tools before moving on to drafting a PRD.","### Initial Understanding
+The stakeholder likely wants a centralized platform that visually represents key metrics and trends to aid in decision-making. They might be looking for real-time data insights and historical comparisons to help track performance and identify areas for improvement.
+
+### Possible Cause or Scenario
+1. **Data Overload:** Management may be overwhelmed by the amount of raw data available and needs a simplified view to make sense of it all.
+2. **Strategic Planning:** There could be upcoming strategic initiatives where they need to assess current performance against goals, requiring more structured reporting.
+
+### Quick Suggestion
+Let's set up a quick brainstorming session with the team to outline key metrics and user needs for the dashboard. We can also review existing reports to identify gaps and opportunities for improvement. This will help us gather initial requirements before any technical discussions.","### 1. Surface Requirement
+Management wants a dashboard and better reports for decisions.
+
+### 2. Assumptions
+- Assumption 1: Management requires data visualization to support decision-making processes.
+- Assumption 2: Users of the dashboard and reports may include executives, team leads, and analysts.
+- Assumption 3: The current reporting tools are insufficient or lack necessary features.
+- Assumption 4: The dashboard should aggregate data from multiple sources.
+- Assumption 5: The reports should be customizable to meet different management needs.
+
+### 3. Clarified Requirement Draft
+Develop a dashboard that provides visual insights and customizable reports to support management decision-making processes.
+
+### 4. Missing Information
+- User types: Who specifically will use the dashboard and reports?
+- Context: What specific decisions are being made that require this data?
+- Scope: What data sources should be included in the dashboard?
+- Constraints: Are there any technical limitations or existing systems that must be integrated?
+- Success criteria: How will we measure the effectiveness of the dashboard and reports?
+- Priority: What is the urgency of this request?
+
+### 5. Clarification Questions
+1. Who are the primary users of the dashboard and reports?
+2. What specific decisions are you looking to support with this dashboard?
+3. What data sources do you want to include in the dashboard?
+4. Are there any specific features or functionalities you envision for the dashboard?
+5. How do you currently generate reports, and what are the limitations of the existing process?
+6. What is the timeline for implementing this dashboard and reporting solution?
+
+### 6. Internal Checks
+- Check with engineering to understand technical feasibility and integration requirements.
+- Consult with data teams to identify available data sources and data quality issues.
+- Engage with operations to assess any existing reporting tools and their limitations.
+- Discuss with support teams to understand common user pain points with current reporting.
+
+### 7. Next Actions
+1. Schedule a follow-up meeting with stakeholders to gather detailed requirements.
+2. Prepare a user persona document based on potential users of the dashboard.
+3. Conduct a competitive analysis of existing dashboard solutions for inspiration.
+4. Draft a preliminary wireframe of the dashboard for visual discussion with stakeholders.
+
+### 8. Risks / Ambiguities
+- Misunderstanding the specific needs of management could lead to developing an ineffective solution.
+- There may be hidden business rules regarding data privacy or access that need to be clarified.
+- Scope creep may occur if additional features are requested after initial requirements are gathered.
+- The need for human review of reports might not be addressed, leading to potential errors in decision-making.","### 1. Surface Requirement
+Management wants a dashboard and better reports for decisions.
+
+### 2. Assumptions
+- Assumption 1: The dashboard and reports are intended for management-level users who require insights for strategic decision-making.
+- Assumption 2: The current reporting tools are insufficient in terms of data visualization, accessibility, or comprehensiveness.
+- Assumption 3: Management is looking for real-time data or near real-time updates to inform their decisions.
+- Assumption 4: There are specific metrics or KPIs that management is interested in tracking, but these have not been specified.
+
+### 3. Clarified Requirement Draft
+Management requires a user-friendly dashboard and enhanced reporting capabilities that provide actionable insights to support decision-making processes.
+
+### 4. Missing Information
+- User Type: Who specifically will be using the dashboard and reports (e.g., executives, department heads)?
+- Context: What types of decisions are being made based on these reports?
+- Scope: What specific data or metrics should be included in the dashboard and reports?
+- Constraints: Are there any technical limitations or budget constraints we need to consider?
+- Success Criteria: How will we measure the effectiveness of the dashboard and reports?
+- Priority: How urgent is this request compared to other ongoing projects?
+
+### 5. Clarification Questions
+1. Who are the primary users of the dashboard and reports?
+2. What specific decisions do you hope to support with this dashboard and reporting tool?
+3. What key metrics or KPIs do you want to see on the dashboard?
+4. Are there any existing reports that you find useful, and what do you like or dislike about them?
+5. What is the desired frequency of updates for the dashboard and reports (real-time, daily, weekly)?
+6. Are there any specific visualizations or formats you prefer for the dashboard?
+7. What tools or platforms are currently being used for reporting, and what are their limitations?
+8. What is the timeline for delivering this dashboard and reporting capability?
+
+### 6. Internal Checks
+- Check with the engineering team regarding the feasibility of integrating data sources for the dashboard.
+- Consult the data team to understand what data is currently available and how it can be accessed.
+- Discuss with the operations team to identify any existing reporting processes that could be improved.
+- Engage with the support team to gather feedback on common user issues with current reporting tools.
+
+### 7. Next Actions
+1. Schedule a follow-up meeting with management to gather more detailed requirements and clarify the questions listed.
+2. Conduct a stakeholder analysis to identify all potential users and their needs.
+3. Research existing dashboard and reporting tools to benchmark features and capabilities.
+4. Prepare a preliminary outline of potential metrics and visualizations based on initial assumptions.
+
+### 8. Risks / Ambiguities
+- There may be differing opinions among management on what constitutes ""better"" reports and dashboards, leading to conflicting requirements.
+- The lack of clarity on specific metrics could result in a dashboard that does not meet user needs.
+- Scope creep could occur if additional features are requested after initial requirements are gathered.
+- There may be hidden dependencies on other projects or systems that could affect the timeline and resources available for this initiative.","### 1. Surface Requirement
+Management wants a dashboard and better reports for decisions.
+
+### 2. Assumptions
+- The users of the dashboard and reports are likely management and decision-makers.
+- The dashboard should provide visual representations of data for easier interpretation.
+- The reports may need to include historical data and trends.
+- The current reporting tools may be inadequate, leading to the request for improvements.
+- Management is looking for insights that can drive strategic decisions.
+
+### 3. Clarified Requirement Draft
+Develop a dashboard that provides visual data representations and enhanced reporting capabilities to support management in making informed decisions.
+
+### 4. Missing Information
+- Who are the primary users of the dashboard and reports?
+- What specific decisions are management trying to support with this dashboard and reports?
+- What data sources should be integrated into the dashboard and reports?
+- Are there specific metrics or KPIs that management is interested in tracking?
+- What is the desired frequency for report generation (e.g., real-time, daily, weekly)?
+- What are the constraints regarding data privacy and security?
+- What is the priority level of this requirement compared to other ongoing projects?
+
+### 5. Clarification Questions
+- Can you specify the types of decisions that the dashboard and reports should support?
+- Who will be the primary users of the dashboard and reports?
+- What specific data points or metrics do you want to see on the dashboard?
+- Are there existing reports that you find useful or would like to improve upon?
+- What is the preferred format for the reports (e.g., PDF, Excel, web-based)?
+- How frequently do you need the reports to be generated?
+- Are there any specific design preferences or examples of dashboards you admire?
+- What is the timeline for implementing this requirement?
+
+### 6. Internal Checks
+- Consult with the engineering team to understand the feasibility of integrating required data sources.
+- Check with the data team to ensure data availability and quality for the requested metrics.
+- Discuss with the design team about best practices for dashboard usability and aesthetics.
+- Coordinate with the operations team to understand any constraints related to data security and compliance.
+
+### 7. Next Actions
+- Schedule a follow-up meeting with stakeholders to gather detailed requirements and clarify questions.
+- Create a draft wireframe or mockup of the dashboard for initial feedback from management.
+- Research existing dashboard solutions for inspiration and best practices.
+- Compile a list of potential data sources and metrics to discuss with the data team.
+
+### 8. Risks / Ambiguities
+- There may be differing expectations among management regarding what ""better reports"" entail.
+- The scope of the dashboard could expand if additional features or metrics are requested later.
+- There might be hidden business rules related to data access that could complicate implementation.
+- Misalignment on priorities could lead to delays if other projects are deemed more critical.",8
