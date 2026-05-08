@@ -4,24 +4,88 @@ from openai import OpenAI
 
 client = OpenAI()
 
-st.title("AI Requirement Clarifier")
-
-st.write(
-    "This tool helps ToB product managers clarify vague stakeholder requests "
-    "before PRD writing or engineering discussion."
+st.set_page_config(
+    page_title="AI Requirement Clarifier",
+    page_icon="🧩",
+    layout="wide"
 )
 
-st.caption(
-    "Baseline: quick informal PM analysis. Improved: structured PM clarification with assumptions, missing information, next actions, and risks."
+st.title("🧩 AI Requirement Clarifier")
+st.subheader("Turn vague ToB requirements into structured, actionable specifications.")
+
+st.markdown(
+    """
+    This tool helps product teams clarify vague stakeholder requests before development starts.
+    It compares a simple baseline summary with a structured GenAI clarification workflow.
+    """
 )
 
-st.info(
-    "Example: Users say checkout is slow and confusing."
+with st.sidebar:
+    st.header("About This Tool")
+    st.markdown(
+        """
+        **Target users:**  
+        Product managers and business analysts.
+
+        **Workflow:**  
+        1. Enter a vague requirement  
+        2. Choose Baseline or Improved mode  
+        3. Review the generated output  
+
+        **Baseline:** simple summary  
+        **Improved:** structured clarification
+        """
+    )
+
+    st.divider()
+
+    st.markdown(
+        """
+        **Improved output includes:**
+        - Clarified Requirement
+        - Missing Information
+        - Clarification Questions
+        - Risks / Ambiguities
+        """
+    )
+
+example_inputs = {
+    "Dashboard": "Users have requested a dashboard to monitor system performance and metrics in a more structured way.",
+    "Checkout UX": "Users report that the checkout process is slow and confusing, and it needs improvement.",
+    "Approval Workflow": "The finance team wants better approval workflows for expense requests.",
+    "Very Vague": "A stakeholder simply said: make it better."
+}
+
+st.markdown("### Try an Example")
+
+cols = st.columns(4)
+
+selected_example = None
+
+for i, (label, text) in enumerate(example_inputs.items()):
+    with cols[i]:
+        if st.button(label):
+            selected_example = text
+
+if "requirement_input" not in st.session_state:
+    st.session_state.requirement_input = ""
+
+if selected_example:
+    st.session_state.requirement_input = selected_example
+
+st.markdown("### Requirement Input")
+
+user_input = st.text_area(
+    "Enter a vague or incomplete business requirement:",
+    value=st.session_state.requirement_input,
+    height=140
 )
 
-user_input = st.text_area("Enter stakeholder requirement:")
-
-mode = st.selectbox("Choose mode", ["Baseline", "Improved"])
+mode = st.radio(
+    "Choose mode:",
+    ["Baseline", "Improved"],
+    horizontal=True
+)
 
 workflow_stage = st.selectbox(
     "Workflow stage",
@@ -31,7 +95,6 @@ workflow_stage = st.selectbox(
         "Before engineering discussion"
     ]
 )
-
 
 def baseline_response(text, stage):
     prompt = f"""
@@ -69,7 +132,6 @@ Rules:
     )
 
     return response.choices[0].message.content
-
 
 def improved_response(text, stage):
     prompt = f"""
@@ -129,7 +191,6 @@ Rules:
 
     return response.choices[0].message.content
 
-
 def evaluation_checklist(result):
     checklist = {
         "Contains clarified requirement": "Clarified Requirement" in result or "Clarified Requirement Draft" in result,
@@ -143,6 +204,7 @@ def evaluation_checklist(result):
 
     return checklist
 
+st.markdown("---")
 
 if st.button("Generate"):
     if user_input.strip() == "":
@@ -165,7 +227,22 @@ if st.button("Generate"):
 
                 for item, passed in checklist.items():
                     st.write(f"{'✅' if passed else '❌'} {item}")
+                st.markdown("### Output")
+
+            st.download_button(
+                label="Download Output",
+                data=result,
+                file_name=f"{mode.lower()}_output.txt",
+                mime="text/plain"
+            )
 
         except Exception as e:
             st.error("An error occurred while generating the response.")
             st.code(str(e))
+
+st.markdown("---")
+
+st.caption(
+    "Note: This tool is designed to support early-stage requirement clarification. "
+    "Human review is still required before finalizing any business requirement."
+)
