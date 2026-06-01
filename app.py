@@ -10,13 +10,13 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🧩 AI Requirement Clarifier")
-st.subheader("Turn vague ToB requirements into structured, actionable specifications.")
+st.title("🧩 AI Requirement Agent")
+st.subheader("Turn vague ToB requirements into structured, actionable requirement documents.")
 
 st.markdown(
     """
     This tool helps product teams clarify vague stakeholder requests before development starts.
-    It compares a simple baseline summary with a structured GenAI clarification workflow.
+    It supports quick comparison modes and a multi-step requirement Agent workflow.
     """
 )
 
@@ -29,11 +29,12 @@ with st.sidebar:
 
         **Workflow:**  
         1. Enter a vague requirement  
-        2. Choose Baseline or Improved mode  
-        3. Review the generated output  
+        2. Choose a project stage  
+        3. Run analysis, clarification, document drafting, and review  
 
         **Baseline:** simple summary  
         **Improved:** structured clarification
+        **Agent Workflow:** iterative PM Copilot flow
         """
     )
 
@@ -46,6 +47,13 @@ with st.sidebar:
         - Missing Information
         - Clarification Questions
         - Risks / Ambiguities
+
+        **Agent Workflow includes:**
+        - Requirement Analysis
+        - Clarification Questions
+        - Stakeholder Answers
+        - Requirement Document
+        - Review Result
         """
     )
 
@@ -83,7 +91,7 @@ user_input = st.text_area(
 
 mode = st.radio(
     "Choose mode:",
-    ["Baseline", "Improved"],
+    ["Baseline", "Improved", "Agent Workflow"],
     horizontal=True
 )
 
@@ -95,6 +103,18 @@ workflow_stage = st.selectbox(
         "Before engineering discussion"
     ]
 )
+
+def call_openai(prompt, temperature):
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "user", "content": prompt}
+        ],
+        temperature=temperature
+    )
+
+    return response.choices[0].message.content
+
 
 def baseline_response(text, stage):
     prompt = f"""
@@ -123,15 +143,7 @@ Rules:
 - You may make reasonable assumptions, but do not deeply validate them.
 """
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "user", "content": prompt}
-        ],
-        temperature=0.5
-    )
-
-    return response.choices[0].message.content
+    return call_openai(prompt, 0.5)
 
 def improved_response(text, stage):
     prompt = f"""
@@ -181,15 +193,185 @@ Rules:
 - Be concise and practical.
 """
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "user", "content": prompt}
-        ],
-        temperature=0.3
-    )
+    return call_openai(prompt, 0.3)
 
-    return response.choices[0].message.content
+
+def analyze_requirement_agent(text, stage):
+    prompt = f"""
+You are the Requirement Analysis Agent in a ToB product team.
+
+Your task is to analyze the stakeholder input before any requirement document is written.
+Do not write the final requirement document in this step.
+Do not invent facts.
+
+Return the result using exactly these sections:
+
+### 1. Surface Requirement
+Restate the stakeholder input without adding new facts.
+
+### 2. Confirmed Information
+List only information explicitly present in the stakeholder input.
+
+### 3. Assumptions
+List assumptions separately and label them as assumptions.
+
+### 4. Ambiguities
+List unclear points that block requirement definition.
+
+### 5. Requirement Decomposition
+Break the input into separate requirement parts when more than one intent exists.
+
+### 6. Stage-Specific Focus
+Explain what matters most at the selected workflow stage.
+
+Requirement:
+{text}
+
+Workflow stage:
+{stage}
+
+Rules:
+- Do not ask clarification questions in this step.
+- Do not draft acceptance criteria in this step.
+- Focus on PM-level requirement analysis.
+"""
+
+    return call_openai(prompt, 0.2)
+
+
+def clarification_question_agent(text, stage, analysis):
+    prompt = f"""
+You are the Clarification Question Agent in a ToB product team.
+
+Your task is only to generate clarification questions for the stakeholder and internal team.
+Do not write the final requirement document.
+Do not invent stakeholder answers.
+
+Use the original requirement, workflow stage, and analysis result.
+
+Return the result using exactly these sections:
+
+### 1. Stakeholder Questions
+Ask questions that clarify business goal, users, scenarios, scope, priority, and success criteria.
+
+### 2. Internal Team Questions
+Ask questions for engineering, data, operations, support, or other internal teams.
+
+### 3. Questions Required Before PRD
+List questions that must be answered before a PRD can be written.
+
+Requirement:
+{text}
+
+Workflow stage:
+{stage}
+
+Analysis result:
+{analysis}
+
+Rules:
+- Every question must reduce ambiguity.
+- Do not provide answers.
+- Do not suggest implementation before the requirement is clarified.
+"""
+
+    return call_openai(prompt, 0.2)
+
+
+def requirement_document_agent(text, stage, analysis, questions, answers):
+    prompt = f"""
+You are the Requirement Document Agent in a ToB product team.
+
+Your task is to draft a requirement document based on the available information.
+Separate confirmed information, assumptions, and open questions.
+Do not turn unanswered questions into facts.
+
+Return the result using exactly these sections:
+
+### 1. Background
+Summarize the context using confirmed information.
+
+### 2. Problem Statement
+Describe the problem without adding unsupported facts.
+
+### 3. User Need
+Describe the user need based on available information.
+
+### 4. Clarified Requirement
+Write a clearer requirement draft.
+
+### 5. Scope
+List what is included.
+
+### 6. Out of Scope
+List what is not included or not yet confirmed.
+
+### 7. Acceptance Criteria
+List verifiable criteria. If information is missing, mark it as requiring confirmation.
+
+### 8. Open Questions
+List unresolved questions.
+
+### 9. Next Actions
+List practical next steps before development.
+
+Requirement:
+{text}
+
+Workflow stage:
+{stage}
+
+Analysis result:
+{analysis}
+
+Clarification questions:
+{questions}
+
+Stakeholder answers:
+{answers}
+
+Rules:
+- Do not invent metrics, business rules, user roles, or technical solutions.
+- Mark assumptions clearly.
+- Keep the document practical for PM review.
+"""
+
+    return call_openai(prompt, 0.2)
+
+
+def review_agent(requirement_document):
+    prompt = f"""
+You are the Requirement Review Agent in a ToB product team.
+
+Your task is to review the requirement document before it is used for PRD writing or engineering discussion.
+
+Return the result using exactly these sections:
+
+### 1. Unsupported Facts
+Identify statements that appear unsupported by the provided information.
+
+### 2. Remaining Ambiguities
+List unclear points that still require confirmation.
+
+### 3. Missing Acceptance Criteria
+List acceptance criteria that are missing or not verifiable.
+
+### 4. Readiness Assessment
+State whether the document is ready for the selected workflow stage, and explain why.
+
+### 5. Revision Suggestions
+Suggest concrete revisions.
+
+Requirement document:
+{requirement_document}
+
+Rules:
+- Review the document critically.
+- Do not add new requirement content.
+- Focus on requirement quality, clarity, and actionability.
+"""
+
+    return call_openai(prompt, 0.1)
 
 def evaluation_checklist(result):
     checklist = {
@@ -206,7 +388,7 @@ def evaluation_checklist(result):
 
 st.markdown("---")
 
-if st.button("Generate"):
+if mode != "Agent Workflow" and st.button("Generate"):
     if user_input.strip() == "":
         st.warning("Please enter a stakeholder requirement.")
     elif not os.getenv("OPENAI_API_KEY"):
@@ -239,6 +421,128 @@ if st.button("Generate"):
         except Exception as e:
             st.error("An error occurred while generating the response.")
             st.code(str(e))
+
+if mode == "Agent Workflow":
+    if "analysis_result" not in st.session_state:
+        st.session_state.analysis_result = ""
+    if "clarification_questions" not in st.session_state:
+        st.session_state.clarification_questions = ""
+    if "stakeholder_answers" not in st.session_state:
+        st.session_state.stakeholder_answers = ""
+    if "requirement_document" not in st.session_state:
+        st.session_state.requirement_document = ""
+    if "review_result" not in st.session_state:
+        st.session_state.review_result = ""
+
+    st.markdown("### Agent Workflow")
+
+    if user_input.strip() == "":
+        st.info("Enter a stakeholder requirement to start the Agent workflow.")
+    elif not os.getenv("OPENAI_API_KEY"):
+        st.error("OPENAI_API_KEY is not set. Please set your API key before using the app.")
+    else:
+        step_1, step_2, step_3, step_4 = st.columns(4)
+
+        with step_1:
+            run_analysis = st.button("1. Analyze")
+        with step_2:
+            run_questions = st.button("2. Ask")
+        with step_3:
+            run_document = st.button("3. Draft")
+        with step_4:
+            run_review = st.button("4. Review")
+
+        try:
+            if run_analysis:
+                with st.spinner("Analyzing requirement..."):
+                    st.session_state.analysis_result = analyze_requirement_agent(
+                        user_input,
+                        workflow_stage
+                    )
+
+            if run_questions:
+                if not st.session_state.analysis_result:
+                    st.warning("Run Analyze before generating clarification questions.")
+                else:
+                    with st.spinner("Generating clarification questions..."):
+                        st.session_state.clarification_questions = clarification_question_agent(
+                            user_input,
+                            workflow_stage,
+                            st.session_state.analysis_result
+                        )
+
+            st.markdown("#### Stakeholder Answers")
+            st.session_state.stakeholder_answers = st.text_area(
+                "Add stakeholder answers or new information:",
+                value=st.session_state.stakeholder_answers,
+                height=140
+            )
+
+            if run_document:
+                if not st.session_state.analysis_result:
+                    st.warning("Run Analyze before drafting the requirement document.")
+                elif not st.session_state.clarification_questions:
+                    st.warning("Run Ask before drafting the requirement document.")
+                else:
+                    with st.spinner("Drafting requirement document..."):
+                        st.session_state.requirement_document = requirement_document_agent(
+                            user_input,
+                            workflow_stage,
+                            st.session_state.analysis_result,
+                            st.session_state.clarification_questions,
+                            st.session_state.stakeholder_answers
+                        )
+
+            if run_review:
+                if not st.session_state.requirement_document:
+                    st.warning("Run Draft before reviewing the requirement document.")
+                else:
+                    with st.spinner("Reviewing requirement document..."):
+                        st.session_state.review_result = review_agent(
+                            st.session_state.requirement_document
+                        )
+
+        except Exception as e:
+            st.error("An error occurred while running the Agent workflow.")
+            st.code(str(e))
+
+        if st.session_state.analysis_result:
+            st.markdown("### Requirement Analysis")
+            st.markdown(st.session_state.analysis_result)
+
+        if st.session_state.clarification_questions:
+            st.markdown("### Clarification Questions")
+            st.markdown(st.session_state.clarification_questions)
+
+        if st.session_state.requirement_document:
+            st.markdown("### Requirement Document")
+            st.markdown(st.session_state.requirement_document)
+
+        if st.session_state.review_result:
+            st.markdown("### Review Result")
+            st.markdown(st.session_state.review_result)
+
+        final_output = "\n\n".join(
+            [
+                "# Requirement Analysis",
+                st.session_state.analysis_result,
+                "# Clarification Questions",
+                st.session_state.clarification_questions,
+                "# Stakeholder Answers",
+                st.session_state.stakeholder_answers,
+                "# Requirement Document",
+                st.session_state.requirement_document,
+                "# Review Result",
+                st.session_state.review_result
+            ]
+        )
+
+        st.download_button(
+            label="Download Agent Output",
+            data=final_output,
+            file_name="agent_requirement_output.txt",
+            mime="text/plain"
+        )
 
 st.markdown("---")
 

@@ -68,6 +68,16 @@ Rules:
     return response.choices[0].message.content
 
 
+def call_openai(prompt, temperature):
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=temperature
+    )
+
+    return response.choices[0].message.content
+
+
 def improved_response(text, stage):
     prompt = f"""
 You are a ToB product manager working at the early stage of requirement clarification.
@@ -116,13 +126,185 @@ Rules:
 - Be concise and practical.
 """
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.3
-    )
+    return call_openai(prompt, 0.3)
 
-    return response.choices[0].message.content
+
+def analyze_requirement_agent(text, stage):
+    prompt = f"""
+You are the Requirement Analysis Agent in a ToB product team.
+
+Your task is to analyze the stakeholder input before any requirement document is written.
+Do not write the final requirement document in this step.
+Do not invent facts.
+
+Return the result using exactly these sections:
+
+### 1. Surface Requirement
+Restate the stakeholder input without adding new facts.
+
+### 2. Confirmed Information
+List only information explicitly present in the stakeholder input.
+
+### 3. Assumptions
+List assumptions separately and label them as assumptions.
+
+### 4. Ambiguities
+List unclear points that block requirement definition.
+
+### 5. Requirement Decomposition
+Break the input into separate requirement parts when more than one intent exists.
+
+### 6. Stage-Specific Focus
+Explain what matters most at the selected workflow stage.
+
+Requirement:
+{text}
+
+Workflow stage:
+{stage}
+
+Rules:
+- Do not ask clarification questions in this step.
+- Do not draft acceptance criteria in this step.
+- Focus on PM-level requirement analysis.
+"""
+
+    return call_openai(prompt, 0.2)
+
+
+def clarification_question_agent(text, stage, analysis):
+    prompt = f"""
+You are the Clarification Question Agent in a ToB product team.
+
+Your task is only to generate clarification questions for the stakeholder and internal team.
+Do not write the final requirement document.
+Do not invent stakeholder answers.
+
+Use the original requirement, workflow stage, and analysis result.
+
+Return the result using exactly these sections:
+
+### 1. Stakeholder Questions
+Ask questions that clarify business goal, users, scenarios, scope, priority, and success criteria.
+
+### 2. Internal Team Questions
+Ask questions for engineering, data, operations, support, or other internal teams.
+
+### 3. Questions Required Before PRD
+List questions that must be answered before a PRD can be written.
+
+Requirement:
+{text}
+
+Workflow stage:
+{stage}
+
+Analysis result:
+{analysis}
+
+Rules:
+- Every question must reduce ambiguity.
+- Do not provide answers.
+- Do not suggest implementation before the requirement is clarified.
+"""
+
+    return call_openai(prompt, 0.2)
+
+
+def requirement_document_agent(text, stage, analysis, questions, answers):
+    prompt = f"""
+You are the Requirement Document Agent in a ToB product team.
+
+Your task is to draft a requirement document based on the available information.
+Separate confirmed information, assumptions, and open questions.
+Do not turn unanswered questions into facts.
+
+Return the result using exactly these sections:
+
+### 1. Background
+Summarize the context using confirmed information.
+
+### 2. Problem Statement
+Describe the problem without adding unsupported facts.
+
+### 3. User Need
+Describe the user need based on available information.
+
+### 4. Clarified Requirement
+Write a clearer requirement draft.
+
+### 5. Scope
+List what is included.
+
+### 6. Out of Scope
+List what is not included or not yet confirmed.
+
+### 7. Acceptance Criteria
+List verifiable criteria. If information is missing, mark it as requiring confirmation.
+
+### 8. Open Questions
+List unresolved questions.
+
+### 9. Next Actions
+List practical next steps before development.
+
+Requirement:
+{text}
+
+Workflow stage:
+{stage}
+
+Analysis result:
+{analysis}
+
+Clarification questions:
+{questions}
+
+Stakeholder answers:
+{answers}
+
+Rules:
+- Do not invent metrics, business rules, user roles, or technical solutions.
+- Mark assumptions clearly.
+- Keep the document practical for PM review.
+"""
+
+    return call_openai(prompt, 0.2)
+
+
+def review_agent(requirement_document):
+    prompt = f"""
+You are the Requirement Review Agent in a ToB product team.
+
+Your task is to review the requirement document before it is used for PRD writing or engineering discussion.
+
+Return the result using exactly these sections:
+
+### 1. Unsupported Facts
+Identify statements that appear unsupported by the provided information.
+
+### 2. Remaining Ambiguities
+List unclear points that still require confirmation.
+
+### 3. Missing Acceptance Criteria
+List acceptance criteria that are missing or not verifiable.
+
+### 4. Readiness Assessment
+State whether the document is ready for the selected workflow stage, and explain why.
+
+### 5. Revision Suggestions
+Suggest concrete revisions.
+
+Requirement document:
+{requirement_document}
+
+Rules:
+- Review the document critically.
+- Do not add new requirement content.
+- Focus on requirement quality, clarity, and actionability.
+"""
+
+    return call_openai(prompt, 0.1)
 
 
 def count_bullets(section_text):
@@ -195,6 +377,56 @@ def evaluate_improved_output(output):
     return score
 
 
+def evaluate_agent_workflow(analysis, questions, document, review):
+    """
+    Evaluates Agent Workflow output using a 10-point checklist.
+    """
+    score = 0
+
+    surface = extract_section(analysis, "Surface Requirement")
+    confirmed = extract_section(analysis, "Confirmed Information")
+    assumptions = extract_section(analysis, "Assumptions")
+    ambiguities = extract_section(analysis, "Ambiguities")
+    decomposition = extract_section(analysis, "Requirement Decomposition")
+    stakeholder_questions = extract_section(questions, "Stakeholder Questions")
+    internal_questions = extract_section(questions, "Internal Team Questions")
+    clarified = extract_section(document, "Clarified Requirement")
+    acceptance = extract_section(document, "Acceptance Criteria")
+    review_readiness = extract_section(review, "Readiness Assessment")
+
+    if surface.strip():
+        score += 1
+
+    if confirmed.strip():
+        score += 1
+
+    if assumptions.strip():
+        score += 1
+
+    if ambiguities.strip():
+        score += 1
+
+    if decomposition.strip():
+        score += 1
+
+    if count_bullets(stakeholder_questions) >= 3:
+        score += 1
+
+    if count_bullets(internal_questions) >= 2:
+        score += 1
+
+    if clarified.strip():
+        score += 1
+
+    if count_bullets(acceptance) >= 2:
+        score += 1
+
+    if review_readiness.strip():
+        score += 1
+
+    return score
+
+
 def main():
     if not os.getenv("OPENAI_API_KEY"):
         raise EnvironmentError("OPENAI_API_KEY is not set.")
@@ -208,7 +440,12 @@ def main():
 
         baseline_outputs = {}
         improved_outputs = {}
+        agent_analysis_outputs = {}
+        agent_question_outputs = {}
+        agent_document_outputs = {}
+        agent_review_outputs = {}
         improved_scores = []
+        agent_scores = []
 
         for stage in WORKFLOW_STAGES:
             print(f"  Running Baseline - {stage}")
@@ -217,10 +454,41 @@ def main():
             print(f"  Running Improved - {stage}")
             improved_outputs[stage] = improved_response(requirement, stage)
 
-            score = evaluate_improved_output(improved_outputs[stage])
-            improved_scores.append(score)
+            improved_score = evaluate_improved_output(improved_outputs[stage])
+            improved_scores.append(improved_score)
+
+            print(f"  Running Agent Analysis - {stage}")
+            agent_analysis_outputs[stage] = analyze_requirement_agent(requirement, stage)
+
+            print(f"  Running Agent Questions - {stage}")
+            agent_question_outputs[stage] = clarification_question_agent(
+                requirement,
+                stage,
+                agent_analysis_outputs[stage]
+            )
+
+            print(f"  Running Agent Document - {stage}")
+            agent_document_outputs[stage] = requirement_document_agent(
+                requirement,
+                stage,
+                agent_analysis_outputs[stage],
+                agent_question_outputs[stage],
+                "No stakeholder answers were provided during automated evaluation."
+            )
+
+            print(f"  Running Agent Review - {stage}")
+            agent_review_outputs[stage] = review_agent(agent_document_outputs[stage])
+
+            agent_score = evaluate_agent_workflow(
+                agent_analysis_outputs[stage],
+                agent_question_outputs[stage],
+                agent_document_outputs[stage],
+                agent_review_outputs[stage]
+            )
+            agent_scores.append(agent_score)
 
         average_score = round(sum(improved_scores) / len(improved_scores), 2)
+        average_agent_score = round(sum(agent_scores) / len(agent_scores), 2)
 
         row = {
             "Case": index,
@@ -231,7 +499,20 @@ def main():
             "Improved - After stakeholder request": improved_outputs["After stakeholder request"],
             "Improved - Before PRD writing": improved_outputs["Before PRD writing"],
             "Improved - Before engineering discussion": improved_outputs["Before engineering discussion"],
-            "Evaluation score": average_score
+            "Improved evaluation score": average_score,
+            "Agent Analysis - After stakeholder request": agent_analysis_outputs["After stakeholder request"],
+            "Agent Analysis - Before PRD writing": agent_analysis_outputs["Before PRD writing"],
+            "Agent Analysis - Before engineering discussion": agent_analysis_outputs["Before engineering discussion"],
+            "Agent Questions - After stakeholder request": agent_question_outputs["After stakeholder request"],
+            "Agent Questions - Before PRD writing": agent_question_outputs["Before PRD writing"],
+            "Agent Questions - Before engineering discussion": agent_question_outputs["Before engineering discussion"],
+            "Agent Document - After stakeholder request": agent_document_outputs["After stakeholder request"],
+            "Agent Document - Before PRD writing": agent_document_outputs["Before PRD writing"],
+            "Agent Document - Before engineering discussion": agent_document_outputs["Before engineering discussion"],
+            "Agent Review - After stakeholder request": agent_review_outputs["After stakeholder request"],
+            "Agent Review - Before PRD writing": agent_review_outputs["Before PRD writing"],
+            "Agent Review - Before engineering discussion": agent_review_outputs["Before engineering discussion"],
+            "Agent evaluation score": average_agent_score
         }
 
         rows.append(row)
@@ -245,7 +526,20 @@ def main():
         "Improved - After stakeholder request",
         "Improved - Before PRD writing",
         "Improved - Before engineering discussion",
-        "Evaluation score"
+        "Improved evaluation score",
+        "Agent Analysis - After stakeholder request",
+        "Agent Analysis - Before PRD writing",
+        "Agent Analysis - Before engineering discussion",
+        "Agent Questions - After stakeholder request",
+        "Agent Questions - Before PRD writing",
+        "Agent Questions - Before engineering discussion",
+        "Agent Document - After stakeholder request",
+        "Agent Document - Before PRD writing",
+        "Agent Document - Before engineering discussion",
+        "Agent Review - After stakeholder request",
+        "Agent Review - Before PRD writing",
+        "Agent Review - Before engineering discussion",
+        "Agent evaluation score"
     ]
 
     with open(OUTPUT_FILE, "w", encoding="utf-8-sig", newline="") as file:
